@@ -60,33 +60,56 @@ public class Game {
         randomColumn = ThreadLocalRandom.current().nextInt(4, 8);
         randomRow = ThreadLocalRandom.current().nextInt(4, 8);
         char column = (char)(randomColumn+64);
-        A.coordinates[0] = column + randomRow;
+        A.coordiantes[0] = "" + column + randomRow; 
         grid[randomColumn][randomRow] = "A";
         
         //Way Aircraft's going
         int direction = ThreadLocalRandom.current().nextInt(1, 5);
         switch (direction) {
             case 1:
-                A.coordinates[1] = column + randomRow;
-                A.coordinates[2] = column + randomRow;
-                A.coordinates[3] = column + randomRow;
+                A.coordiantes[1] = "" + column + (randomRow+1); 
                 grid[randomColumn][randomRow+1] = "A";
+
+                A.coordiantes[2] = "" + column + (randomRow+2); 
                 grid[randomColumn][randomRow+2] = "A";
+
+                A.coordiantes[3] = "" + column + (randomRow+3); 
                 grid[randomColumn][randomRow+3] = "A";
                 break;
             case 2:
+                A.coordiantes[1] = "" + column + (randomRow-1); 
                 grid[randomColumn][randomRow-1] = "A";
+
+                A.coordiantes[2] = "" + column + (randomRow-2); 
                 grid[randomColumn][randomRow-2] = "A";
+
+                A.coordiantes[3] = "" + column + (randomRow-3); 
                 grid[randomColumn][randomRow-3] = "A";
                 break;
             case 3:
+                char column1 = (char)(randomColumn+63);
+                A.coordiantes[1] = "" + column1 + randomRow; 
                 grid[randomColumn-1][randomRow] = "A";
+
+                char column2 = (char)(randomColumn+62);
+                A.coordiantes[2] = "" + column2 + randomRow; 
                 grid[randomColumn-2][randomRow] = "A";
+
+                char column3 = (char)(randomColumn+61);
+                A.coordiantes[3] = "" + column3 + randomRow; 
                 grid[randomColumn-3][randomRow] = "A";
                 break;
             case 4:
+                char column4 = (char)(randomColumn+65);
+                A.coordiantes[1] = "" + column1 + randomRow; 
                 grid[randomColumn+1][randomRow] = "A";
+
+                char column5 = (char)(randomColumn+66);
+                A.coordiantes[2] = "" + column2 + randomRow; 
                 grid[randomColumn+2][randomRow] = "A";
+
+                char column6 = (char)(randomColumn+67);
+                A.coordiantes[3] = "" + column3 + randomRow; 
                 grid[randomColumn+3][randomRow] = "A";
                 break;    
             default:
@@ -108,12 +131,32 @@ public class Game {
 
         //Torpedos making
         Ship T1 = new Ship("T1", 1);
+        randomColumn = ThreadLocalRandom.current().nextInt(1, 11);
+        randomRow = ThreadLocalRandom.current().nextInt(1, 11);
+        if(grid[randomColumn][randomRow] == " "){
+            char columnT = (char)(randomColumn+64);
+            T1.coordiantes[0] = "" + column + randomRow; 
+            grid[randomColumn][randomRow] = "T1";
+            ships.add(T1);
+        }
+        else{
+
+        }
+
+        /* bad loop 
+        do{
+            
+            char columnT = (char)(randomColumn+64);
+            T1.coordiantes[0] = "" + column + randomRow; 
+            grid[randomColumn][randomRow] = "T1";
+            ships.add(T1);
+        }while(grid[randomColumn][randomRow] != " ");
+        */
+
         Ship T2 = new Ship("T2", 1);
         Ship T3 = new Ship("T3", 1);
-        ships.add(T1);
         ships.add(T2);
         ships.add(T2);
-
         //randomRow[0] = ThreadLocalRandom.current().nextInt(1, 11);
         //randomColumn[0] = ThreadLocalRandom.current().nextInt(1, 11);
 
