@@ -8,5 +8,3 @@ Sends responses to clients with game results and updates.
 Client:
 Sends requests to the server based on user actions (e.g., firing shots).
 Receives responses from the server.
-Renders the game state and user interface.
-Displays information on the browser page.

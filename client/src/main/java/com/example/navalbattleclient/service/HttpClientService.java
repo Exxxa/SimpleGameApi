@@ -1,4 +1,4 @@
-package com.example.NavalBattle.client.service;
+package com.example.navalbattle.service;
 
 // HttpClientService.java
 import org.springframework.http.HttpEntity;

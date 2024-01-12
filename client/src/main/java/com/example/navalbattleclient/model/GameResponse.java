@@ -1,4 +1,4 @@
-package com.example.NavalBattle.client.model;
+package com.example.NavalBattle.model;
 
 // GameResponse.java
 public class GameResponse {

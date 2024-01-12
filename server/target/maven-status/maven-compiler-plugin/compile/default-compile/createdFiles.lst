@@ -1,0 +1,7 @@
+com\example\NavalBattle\repository\ShipRepository.class
+com\example\NavalBattle\service\ShipService.class
+com\example\NavalBattle\model\Ship.class
+com\example\NavalBattle\model\Game.class
+com\example\NavalBattle\repository\GameRepository.class
+com\example\NavalBattle\ServerMain.class
+com\example\NavalBattle\service\GameService.class
