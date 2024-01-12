@@ -1,8 +1,8 @@
 package com.example.NavalBattle.server.service;
 
 // GameService.java
-import com.yourcompany.navalbattle.model.Game;
-import com.yourcompany.navalbattle.model.Ship;
+import com.example.NavalBattle.server.model.Game;
+import com.example.NavalBattle.server.model.Ship;
 
 public class GameService {
     private static final int GRID_SIZE = 10;
