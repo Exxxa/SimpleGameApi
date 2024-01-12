@@ -1,5 +1,5 @@
-package com.example.NavalBattle.model;
-
+package com.example.navalbattleclient.model;
+/* 
 public class GameRequest {
     private String teamName;
     private int row;
@@ -40,3 +40,4 @@ public class GameRequest {
         this.col = col;
     }
 }
+*/

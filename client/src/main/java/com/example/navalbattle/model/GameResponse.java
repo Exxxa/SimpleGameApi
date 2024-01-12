@@ -1,5 +1,5 @@
-package com.example.NavalBattle.model;
-
+package com.example.navalbattleclient.model;
+/* 
 // GameResponse.java
 public class GameResponse {
     private String result; // 'hit', 'miss', or 'sunk'
@@ -42,3 +42,4 @@ public class GameResponse {
     }
 }
 
+*/

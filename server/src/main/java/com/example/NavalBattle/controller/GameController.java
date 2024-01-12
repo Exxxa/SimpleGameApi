@@ -1,4 +1,4 @@
-package com.example.navalbattle.controller
+package com.example.navalbattle.controller;
 
 // GameController.java
 @RestController

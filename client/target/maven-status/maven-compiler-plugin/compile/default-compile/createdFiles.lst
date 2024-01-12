@@ -1,5 +1,2 @@
-com\example\NavalBattle\model\GameResponse.class
-com\example\NavalBattle\service\HttpClientService.class
-com\example\NavalBattle\model\GameRequest.class
-com\example\NavalBattle\ClientMain.class
-com\example\NavalBattle\service\GameService.class
+com\example\navalbattleclient\ClientMain.class
+com\example\navalbattleclient\service\GameService.class

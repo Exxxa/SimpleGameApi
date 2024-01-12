@@ -1,5 +1,5 @@
-package com.example.navalbattle.service;
-
+package com.example.navalbattleclient.service;
+/*
 // HttpClientService.java
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -19,3 +19,4 @@ public class HttpClientService {
 
     // Additional methods for handling HTTP requests can be added here
 }
+ */
