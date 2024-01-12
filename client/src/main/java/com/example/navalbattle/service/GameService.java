@@ -1,4 +1,4 @@
-package com.example.navalbattle.service;
+package com.example.navalbattleclient.service;
 
 // GameService.java
 
