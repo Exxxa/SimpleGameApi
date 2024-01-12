@@ -1,7 +1,7 @@
-package com.example.NavalBattle.server.repository;
+package com.example.NavalBattle.repository;
 // ShipRepository.java
 
-import com.example.NavalBattle.server.model.Ship;
+import com.example.NavalBattle.model.Ship;
 
 import java.util.ArrayList;
 import java.util.List;

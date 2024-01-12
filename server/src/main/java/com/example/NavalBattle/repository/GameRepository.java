@@ -1,7 +1,7 @@
-package com.example.NavalBattle.server.repository;
+package com.example.NavalBattle.repository;
 // GameRepository.java
 
-import com.example.NavalBattle.server.model.Game;
+import com.example.NavalBattle.model.Game;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,5 +1,4 @@
-// Game.java
-package com.example.NavalBattle.server.model;
+package com.example.NavalBattle.model;
 
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.ArrayList;

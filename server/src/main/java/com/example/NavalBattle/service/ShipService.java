@@ -1,6 +1,6 @@
-package com.example.NavalBattle.server.service;
+package com.example.NavalBattle.service;
 
-import com.example.NavalBattle.server.model.Ship;
+import com.example.NavalBattle.model.Ship;
 
 public class ShipService {
     public static void placeShip(Ship ship, char[][] grid, int startRow, int startCol, boolean isVertical) {
