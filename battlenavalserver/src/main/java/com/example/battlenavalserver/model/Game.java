@@ -130,35 +130,49 @@ public class Game {
         ships.add(D2);
 
         //Torpedos making
+        int empty = 0;
         Ship T1 = new Ship("T1", 1);
-        randomColumn = ThreadLocalRandom.current().nextInt(1, 11);
-        randomRow = ThreadLocalRandom.current().nextInt(1, 11);
-        if(grid[randomColumn][randomRow] == " "){
-            char columnT = (char)(randomColumn+64);
-            T1.coordiantes[0] = "" + column + randomRow; 
-            grid[randomColumn][randomRow] = "T1";
-            ships.add(T1);
+        while(empty == 0){
+            randomColumn = ThreadLocalRandom.current().nextInt(1, 11);
+            randomRow = ThreadLocalRandom.current().nextInt(1, 11);
+            if(grid[randomColumn][randomRow] == " "){
+                char columnT = (char)(randomColumn+64);
+                T1.coordiantes[0] = "" + column + randomRow; 
+                grid[randomColumn][randomRow] = "T1";
+                ships.add(T1);
+                empty = 1;
+            }
         }
-        else{
 
-        }
-
-        /* bad loop 
-        do{
-            
-            char columnT = (char)(randomColumn+64);
-            T1.coordiantes[0] = "" + column + randomRow; 
-            grid[randomColumn][randomRow] = "T1";
-            ships.add(T1);
-        }while(grid[randomColumn][randomRow] != " ");
-        */
-
+        empty = 0;
         Ship T2 = new Ship("T2", 1);
+        while(empty == 0){
+            randomColumn = ThreadLocalRandom.current().nextInt(1, 11);
+            randomRow = ThreadLocalRandom.current().nextInt(1, 11);
+            if(grid[randomColumn][randomRow] == " "){
+                char columnT = (char)(randomColumn+64);
+                T2.coordiantes[0] = "" + column + randomRow; 
+                grid[randomColumn][randomRow] = "T2";
+                ships.add(T2);
+                empty = 1;
+            }
+        }
+
+        empty = 0;
         Ship T3 = new Ship("T3", 1);
-        ships.add(T2);
-        ships.add(T2);
-        //randomRow[0] = ThreadLocalRandom.current().nextInt(1, 11);
-        //randomColumn[0] = ThreadLocalRandom.current().nextInt(1, 11);
+        while(empty == 0){
+            randomColumn = ThreadLocalRandom.current().nextInt(1, 11);
+            randomRow = ThreadLocalRandom.current().nextInt(1, 11);
+            if(grid[randomColumn][randomRow] == " "){
+                char columnT = (char)(randomColumn+64);
+                T3.coordiantes[0] = "" + column + randomRow; 
+                grid[randomColumn][randomRow] = "T3";
+                ships.add(T3);
+                empty = 1;
+            }
+        }
+        //randomRow = ThreadLocalRandom.current().nextInt(1, 11);
+        //randomColumn = ThreadLocalRandom.current().nextInt(1, 11);
 
         //Conversion to to char from int : (char)(a+64) (1 becomes A, 2 becomes B, ...)
     }
@@ -185,6 +199,56 @@ public class Game {
 
     public void incrementShotsFired() {
         shotsFired++;
+    }
+
+    public String processFiring(int row, int column) {
+        if (row < 1 || row > 10 || column < 1 || column > 10) {
+            return "Coordinates not on the board";  
+        }
+    
+        char cellStatus = grid[row - 1][column - 1];
+        switch (cellStatus) {
+            case ' ':  // Empty cell - miss
+                grid[row - 1][column - 1] = 'M';
+                incrementShotsFired();
+                return "miss";
+            case 'S':  // Ship cell - hit
+                grid[row - 1][column - 1] = 'H';
+                incrementShotsFired();
+    
+                for (Ship ship : ships) {
+                    if (ship.isHit(row, column)) {
+                        ship.markCoordinateAsHit(row, column);
+                        if (ship.isSunk()) {
+                            return "sunk";
+                        }
+                        return "hit";
+                    }
+                }
+                return "Unexpected error in processing hit"; 
+            case 'M':  // Already missed - treat as a miss
+                return "miss";
+            case 'H':  // Already hit - treat as a hit
+                return "hit";
+            default:
+                return "Unexpected cell status";
+        }
+    }
+    
+    private static class Coordinate {
+        private final int row;
+        private final int column;
+        private boolean isHit;
+    
+        public Coordinate(int row, int column) {
+            this.row = row;
+            this.column = column;
+            this.isHit = false;
+        }
+    
+        public void markAsHit() {
+            this.isHit = true;
+        }
     }
 
     // You may need additional methods for game logic, such as processing a fire command,
