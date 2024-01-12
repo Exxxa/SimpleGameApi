@@ -1,4 +1,4 @@
-package com.example.NavalBattle.model;
+package com.example.navalbattle.model;
 
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.ArrayList;

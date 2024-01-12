@@ -1,4 +1,4 @@
-package com.example.NavalBattle.repository;
+package com.example.navalbattle.repository;
 // GameRepository.java
 
 import com.example.NavalBattle.model.Game;

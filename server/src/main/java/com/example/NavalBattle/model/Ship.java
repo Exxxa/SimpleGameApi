@@ -1,4 +1,4 @@
-package com.example.NavalBattle.model;
+package com.example.navalbattle.model;
 
 public class Ship {
     private final String name;

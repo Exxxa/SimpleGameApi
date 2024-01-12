@@ -1,4 +1,4 @@
-package com.example.NavalBattle.service;
+package com.example.navalbattle.service;
 
 import com.example.NavalBattle.model.Ship;
 
