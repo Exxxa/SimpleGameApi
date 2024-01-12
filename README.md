@@ -1,5 +1,10 @@
 # Group Project Repository
 
+## Team members of : Debugging Gorillas
+LOPEZ Pierre
+MOY Zacharie
+VAUTIER Erwan
+
 ## Introduction
 This repository hosts the group project for the INF4051 course. Each student team is required to clone this repository, create a branch with their team name, and update the README file with details about their team members.
 
