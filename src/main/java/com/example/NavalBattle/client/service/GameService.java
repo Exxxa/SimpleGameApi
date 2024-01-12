@@ -2,8 +2,8 @@ package com.example.NavalBattle.client.service;
 
 // GameService.java
 
-import com.yourcompany.navalbattle.model.Game;
-import com.yourcompany.navalbattle.model.Ship;
+import com.example.NavalBattle.server.model.Game;
+import com.example.NavalBattle.server.model.Ship;
 
 public class GameService {
     private static final int GRID_SIZE = 10;
@@ -46,4 +46,9 @@ public class GameService {
         // Implement additional logic as needed
     }
 
-    private static boolean fireAtShip(Ship ship, int
+    private static boolean fireAtShip(Ship ship, int row, int col) {
+        // Implement logic to check if the given coordinates hit the ship
+        // Return true if hit, false otherwise
+        return false;
+    }
+}

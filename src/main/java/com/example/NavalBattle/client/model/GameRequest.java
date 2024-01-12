@@ -37,4 +37,6 @@ public class GameRequest {
     }
 
     public void setCol(int col) {
-        th
+        this.col = col;
+    }
+}
