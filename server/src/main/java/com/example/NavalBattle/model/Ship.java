@@ -3,6 +3,7 @@ package com.example.NavalBattle.server.model;
 public class Ship {
     private final String name;
     private final int size;
+    private List<String> coordinates;
     private int hits;
 
     public Ship(String name, int size) {
