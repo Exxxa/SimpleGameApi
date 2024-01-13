@@ -26,6 +26,10 @@ public class Ship {
         return hits;
     }
 
+    public List<String> getCoordinates(Ship ship){
+        return ship.coordinates;
+    }
+
     public void hit() {
         hits++;
     }
