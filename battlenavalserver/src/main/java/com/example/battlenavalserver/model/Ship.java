@@ -15,15 +15,15 @@ public class Ship {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public int getSize() {
-        return size;
+        return this.size;
     }
 
     public int getHits() {
-        return hits;
+        return this.hits;
     }
 
     public List<String> getCoordinates(Ship ship){
@@ -31,10 +31,14 @@ public class Ship {
     }
 
     public void hit() {
-        hits++;
+        this.hits++;
     }
 
     public boolean isSunk() {
-        return hits >= size;
+        return this.hits >= this.size;
+    }
+
+    public int getLength() {
+        return this.size;
     }
 }

@@ -13,7 +13,7 @@ public class Game {
     private final String[][] grid;
     private int shotsFired;
 
-    public Game(String gameId, String teamName) {
+    public Game(String gameId, String teamName, List<Ship> ships2, char[][] grid2, int i) {
         this.gameId = gameId;
         this.teamName = teamName;
         this.ships = new ArrayList<>();
