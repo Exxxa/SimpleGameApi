@@ -60,20 +60,20 @@ public class Game {
         randomColumn = ThreadLocalRandom.current().nextInt(4, 8);
         randomRow = ThreadLocalRandom.current().nextInt(4, 8);
         char column = (char)(randomColumn+64);
-        A.coordiantes[0] = "" + column + randomRow; 
+        A.coordinates[0] = "" + column + randomRow; 
         grid[randomColumn][randomRow] = "A";
         
         //Way Aircraft's going
         int direction = ThreadLocalRandom.current().nextInt(1, 5);
         switch (direction) {
             case 1:
-                A.coordiantes[1] = "" + column + (randomRow+1); 
+                A.coordinates[1] = "" + column + (randomRow+1); 
                 grid[randomColumn][randomRow+1] = "A";
 
-                A.coordiantes[2] = "" + column + (randomRow+2); 
+                A.coordinates[2] = "" + column + (randomRow+2); 
                 grid[randomColumn][randomRow+2] = "A";
 
-                A.coordiantes[3] = "" + column + (randomRow+3); 
+                A.coordinates[3] = "" + column + (randomRow+3); 
                 grid[randomColumn][randomRow+3] = "A";
                 break;
             case 2:
