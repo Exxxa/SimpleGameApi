@@ -49,7 +49,7 @@ public class Game {
         }/* */
 
         //Placement strategy :
-        // - First determine randomlythe square where the head of the boat is
+        // - First determine randomly the square where the head of the boat is
         // - Then determine randomly the way the boat is going:
         // meaning 1 up, 2 down, 3 left, 4 right
 
@@ -87,38 +87,223 @@ public class Game {
                 grid[randomColumn][randomRow-3] = "A";
                 break;
             case 3:
-                char column1 = (char)(randomColumn+63);
-                A.coordiantes[1] = "" + column1 + randomRow; 
+                column = (char)(randomColumn+63);
+                A.coordiantes[1] = "" + column + randomRow; 
                 grid[randomColumn-1][randomRow] = "A";
 
-                char column2 = (char)(randomColumn+62);
-                A.coordiantes[2] = "" + column2 + randomRow; 
+                column = (char)(randomColumn+62);
+                A.coordiantes[2] = "" + column + randomRow; 
                 grid[randomColumn-2][randomRow] = "A";
 
-                char column3 = (char)(randomColumn+61);
-                A.coordiantes[3] = "" + column3 + randomRow; 
+                column = (char)(randomColumn+61);
+                A.coordiantes[3] = "" + column + randomRow; 
                 grid[randomColumn-3][randomRow] = "A";
                 break;
             case 4:
-                char column4 = (char)(randomColumn+65);
-                A.coordiantes[1] = "" + column1 + randomRow; 
+                column = (char)(randomColumn+65);
+                A.coordiantes[1] = "" + column + randomRow; 
                 grid[randomColumn+1][randomRow] = "A";
 
-                char column5 = (char)(randomColumn+66);
-                A.coordiantes[2] = "" + column2 + randomRow; 
+                column = (char)(randomColumn+66);
+                A.coordiantes[2] = "" + column + randomRow; 
                 grid[randomColumn+2][randomRow] = "A";
 
-                char column6 = (char)(randomColumn+67);
-                A.coordiantes[3] = "" + column3 + randomRow; 
+                column = (char)(randomColumn+67);
+                A.coordiantes[3] = "" + column + randomRow; 
                 grid[randomColumn+3][randomRow] = "A";
                 break;    
             default:
                 break;
         }
         //Cruisers making
+
+        //Cruiser's head
+        int empty = 0;
         Ship C1 = new Ship("C1", 3);
+        while(empty == 0){
+            randomColumn = ThreadLocalRandom.current().nextInt(3, 9);
+            randomRow = ThreadLocalRandom.current().nextInt(3, 9);
+            if(grid[randomColumn][randomRow] == " "){
+                column  = (char)(randomColumn+64);
+                C1.coordiantes[0] = "" + column + randomRow; 
+                grid[randomColumn][randomRow] = "C1";
+                ships.add(C1);
+                empty = 1;
+            }
+        }
+
+        //Way Cruiser's going
+        //For the first cruiser, only 1 direction can be occupied by the aircraft
+        if(grid[randomColumn][randomRow+1] != " " || grid[randomColumn][randomRow+2] != " "){
+            //1 means down, 2 left, 3 right
+            direction = ThreadLocalRandom.current().nextInt(1, 4);
+            switch (direction) {
+                case 1:
+                    C1.coordiantes[1] = "" + column + (randomRow-1); 
+                    grid[randomColumn][randomRow-1] = "C1";
+
+                    C1.coordiantes[2] = "" + column + (randomRow-2);
+                    grid[randomColumn][randomRow-2] = "C1";
+                    break;
+                case 2:
+                    column = (char)(randomColumn+63);
+                    C1.coordiantes[1] = "" + column + randomRow; 
+                    grid[randomColumn-1][randomRow] = "C1";
+
+                    column = (char)(randomColumn+62);
+                    C1.coordiantes[2] = "" + column + randomRow; 
+                    grid[randomColumn-2][randomRow] = "C1";
+                    break;
+                case 3:
+                    column = (char)(randomColumn+65);
+                    C1.coordiantes[1] = "" + column + randomRow; 
+                    grid[randomColumn+1][randomRow] = "C1";
+
+                    column = (char)(randomColumn+66);
+                    C1.coordiantes[2] = "" + column + randomRow; 
+                    grid[randomColumn+2][randomRow] = "C1";
+                    break;
+                default:
+                    break;
+            }
+        }
+        else if (grid[randomColumn][randomRow-1] != " " || grid[randomColumn][randomRow-2] != " "){
+            //1 means up, 2 left, 3 right
+            direction = ThreadLocalRandom.current().nextInt(1, 4);
+            switch (direction) {
+                case 1:
+                    C1.coordiantes[1] = "" + column + (randomRow+1); 
+                    grid[randomColumn][randomRow+1] = "C1";
+
+                    C1.coordiantes[2] = "" + column + (randomRow+2); 
+                    grid[randomColumn][randomRow+2] = "C1";
+                    break;
+                case 2:
+                    column = (char)(randomColumn+63);
+                    C1.coordiantes[1] = "" + column + randomRow; 
+                    grid[randomColumn-1][randomRow] = "C1";
+
+                    column = (char)(randomColumn+62);
+                    C1.coordiantes[2] = "" + column + randomRow; 
+                    grid[randomColumn-2][randomRow] = "C1";
+                    break;
+                case 3:
+                    column = (char)(randomColumn+65);
+                    C1.coordiantes[1] = "" + column + randomRow; 
+                    grid[randomColumn+1][randomRow] = "C1";
+
+                    column = (char)(randomColumn+66);
+                    C1.coordiantes[2] = "" + column + randomRow; 
+                    grid[randomColumn+2][randomRow] = "C1";
+                    break;
+                default:
+                    break;
+            }
+        }
+        else if(grid[randomColumn-1][randomRow] != " " || grid[randomColumn-2][randomRow] != " "){
+            //1 means up, 2 down, 3 right
+            direction = ThreadLocalRandom.current().nextInt(1, 4);
+            switch (direction) {
+                case 1:
+                    C1.coordiantes[1] = "" + column + (randomRow+1); 
+                    grid[randomColumn][randomRow+1] = "C1";
+
+                    C1.coordiantes[2] = "" + column + (randomRow+2); 
+                    grid[randomColumn][randomRow+2] = "C1";
+                    break;
+                case 2:
+                    C1.coordiantes[1] = "" + column + (randomRow-1); 
+                    grid[randomColumn][randomRow-1] = "C1";
+
+                    C1.coordiantes[2] = "" + column + (randomRow-2); 
+                    grid[randomColumn][randomRow-2] = "C1";
+                    break;
+                case 3:
+                    column = (char)(randomColumn+65);
+                    C1.coordiantes[1] = "" + column + randomRow; 
+                    grid[randomColumn+1][randomRow] = "C1";
+
+                    column = (char)(randomColumn+66);
+                    C1.coordiantes[2] = "" + column + randomRow; 
+                    grid[randomColumn+2][randomRow] = "C1";
+                    break;
+                default:
+                    break;
+            }
+        }
+        else if(grid[randomColumn+1][randomRow] != " " || grid[randomColumn+2][randomRow] != " "){
+            //1 means up, 2 down, 3 left
+            direction = ThreadLocalRandom.current().nextInt(1, 4);
+            switch (direction) {
+                case 1:
+                    C1.coordiantes[1] = "" + column + (randomRow+1); 
+                    grid[randomColumn][randomRow+1] = "C1";
+
+                    C1.coordiantes[2] = "" + column + (randomRow+2); 
+                    grid[randomColumn][randomRow+2] = "C1";
+                    break;
+                case 2:
+                    C1.coordiantes[1] = "" + column + (randomRow-1); 
+                    grid[randomColumn][randomRow-1] = "C1";
+
+                    C1.coordiantes[2] = "" + column + (randomRow-2); 
+                    grid[randomColumn][randomRow-2] = "C1";
+                    break;
+                case 3:
+                    column = (char)(randomColumn+63);
+                    C1.coordiantes[1] = "" + column + randomRow; 
+                    grid[randomColumn-1][randomRow] = "C1";
+
+                    column = (char)(randomColumn+62);
+                    C1.coordiantes[2] = "" + column + randomRow; 
+                    grid[randomColumn-2][randomRow] = "C1";
+                    break;
+                default:
+                    break;
+            }
+        }
+        else{
+            direction = ThreadLocalRandom.current().nextInt(1, 5);
+            switch (direction) {
+                case 1:
+                    C1.coordiantes[1] = "" + column + (randomRow+1); 
+                    grid[randomColumn][randomRow+1] = "C1";
+
+                    C1.coordiantes[2] = "" + column + (randomRow+2); 
+                    grid[randomColumn][randomRow+2] = "C1";
+                    break;
+                case 2:
+                    C1.coordiantes[1] = "" + column + (randomRow-1); 
+                    grid[randomColumn][randomRow-1] = "C1";
+
+                    C1.coordiantes[2] = "" + column + (randomRow-2); 
+                    grid[randomColumn][randomRow-2] = "C1";
+                    break;
+                case 3:
+                    column = (char)(randomColumn+63);
+                    C1.coordiantes[1] = "" + column + randomRow; 
+                    grid[randomColumn-1][randomRow] = "C1";
+
+                    column = (char)(randomColumn+62);
+                    C1.coordiantes[2] = "" + column + randomRow; 
+                    grid[randomColumn-2][randomRow] = "C1";
+                    break;
+                case 4:
+                    column = (char)(randomColumn+65);
+                    C1.coordiantes[1] = "" + column + randomRow; 
+                    grid[randomColumn+1][randomRow] = "C1";
+
+                    column = (char)(randomColumn+66);
+                    C1.coordiantes[2] = "" + column + randomRow; 
+                    grid[randomColumn+2][randomRow] = "C1";
+                    break;    
+                default:
+                    break;
+            }
+        }
+
+
         Ship C2 = new Ship("C2", 3);
-        ships.add(C1);
         ships.add(C2);
         
         //Destroyers making
@@ -130,7 +315,7 @@ public class Game {
         ships.add(D2);
 
         //Torpedos making
-        int empty = 0;
+        empty = 0;
         Ship T1 = new Ship("T1", 1);
         while(empty == 0){
             randomColumn = ThreadLocalRandom.current().nextInt(1, 11);
@@ -171,8 +356,20 @@ public class Game {
                 empty = 1;
             }
         }
-        //randomRow = ThreadLocalRandom.current().nextInt(1, 11);
-        //randomColumn = ThreadLocalRandom.current().nextInt(1, 11);
+
+        empty = 0;
+        Ship T4 = new Ship("T4", 1);
+        while(empty == 0){
+            randomColumn = ThreadLocalRandom.current().nextInt(1, 11);
+            randomRow = ThreadLocalRandom.current().nextInt(1, 11);
+            if(grid[randomColumn][randomRow] == " "){
+                char columnT = (char)(randomColumn+64);
+                T4.coordiantes[0] = "" + column + randomRow; 
+                grid[randomColumn][randomRow] = "T4";
+                ships.add(T4);
+                empty = 1;
+            }
+        }
 
         //Conversion to to char from int : (char)(a+64) (1 becomes A, 2 becomes B, ...)
     }
