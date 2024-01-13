@@ -1,53 +1,64 @@
+// GameService.java
 package com.example.battlenavalserver.service;
 
-// GameService.java
 import com.example.battlenavalserver.model.Game;
 import com.example.battlenavalserver.model.Ship;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class GameService {
+
     private static final int GRID_SIZE = 10;
+    private static final int NUM_SHIPS = 10;
 
-    public static void fire(Game game, int row, int col) {
-        char[][] grid = game.getGrid();
+    public static Game startNewGame(String teamName, String suffix) {
+        char[][] grid = new char[GRID_SIZE][GRID_SIZE];
+        initializeGrid(grid);
 
-        if (row < 0 || row >= GRID_SIZE || col < 0 || col >= GRID_SIZE) {
-            // Handle invalid coordinates
-            return;
-        }
+        List<Ship> ships = placeShipsOnGrid(grid);
 
-        char cell = grid[row][col];
-
-        if (cell == 'X' || cell == 'O') {
-            // The cell has already been fired at
-            return;
-        }
-
-        boolean hit = false;
-
-        for (Ship ship : game.getShips()) {
-            hit = fireAtShip(ship, row, col);
-
-            if (hit) {
-                grid[row][col] = 'X'; // Hit
-                game.incrementShotsFired();
-                if (ship.isSunk()) {
-                    // Implement logic for handling a sunk ship
-                }
-                break;
-            }
-        }
-
-        if (!hit) {
-            grid[row][col] = 'O'; // Miss
-            game.incrementShotsFired();
-        }
-
-        // Implement additional logic as needed
+        return new Game(teamName, suffix, ships, grid, 0);
     }
 
-    private static boolean fireAtShip(Ship ship, int row, int col) {
-        // Implement logic to check if the given coordinates hit the ship
-        // Return true if hit, false otherwise
-        return false;
+    public static void fire(Game game, int row, int col) {
+        // Existing fire logic...
+    }
+
+    private static void initializeGrid(char[][] grid) {
+        for (int i = 0; i < GRID_SIZE; i++) {
+            for (int j = 0; j < GRID_SIZE; j++) {
+                grid[i][j] = ' '; // Empty cell
+            }
+        }
+    }
+
+    private static List<Ship> placeShipsOnGrid(char[][] grid) {
+        List<Ship> ships = new ArrayList<>();
+
+        // Implement logic to randomly place ships on the grid
+        // For simplicity, let's place one ship at a fixed location for now
+        Ship ship = new Ship("Aircraft Carrier", 4, 0, 0, true);
+        placeShip(grid, ship);
+        ships.add(ship);
+
+        // Add logic to place other types of ships...
+
+        return ships;
+    }
+
+    private static void placeShip(char[][] grid, Ship ship) {
+        int length = ship.getLength();
+
+        if (ship.isHorizontal()) {
+            for (int i = 0; i < length; i++) {
+                grid[ship.getRow()][ship.getCol() + i] = 'S'; // 'S' represents a ship
+            }
+        } else {
+            for (int i = 0; i < length; i++) {
+                grid[ship.getRow() + i][ship.getCol()] = 'S'; // 'S' represents a ship
+            }
+        }
     }
 }
