@@ -13,28 +13,28 @@ public class GameService {
     private static final int GRID_SIZE = 10;
     private static final int NUM_SHIPS = 10;
 
-    public static Game startNewGame(String teamName, String suffix) {
-        char[][] grid = new char[GRID_SIZE][GRID_SIZE];
+    /*public static Game startNewGame(String teamName, String suffix) {
+        String[][] grid = new String[GRID_SIZE][GRID_SIZE];
         initializeGrid(grid);
 
         List<Ship> ships = placeShipsOnGrid(grid);
 
         return new Game(teamName, suffix, ships, grid, 0);
-    }
+    }*/
 
     public static void fire(Game game, int row, int col) {
         // Existing fire logic...
     }
 
-    private static void initializeGrid(char[][] grid) {
+    private static void initializeGrid(String[][] grid) {
         for (int i = 0; i < GRID_SIZE; i++) {
             for (int j = 0; j < GRID_SIZE; j++) {
-                grid[i][j] = ' '; // Empty cell
+                grid[i][j] = " "; // Empty cell
             }
         }
     }
 
-    private static List<Ship> placeShipsOnGrid(char[][] grid) {
+    /*private static List<Ship> placeShipsOnGrid(String[][] grid) {
         List<Ship> ships = new ArrayList<>();
 
         // Implement logic to randomly place ships on the grid
@@ -60,5 +60,5 @@ public class GameService {
                 grid[ship.getRow() + i][ship.getCol()] = 'S'; // 'S' represents a ship
             }
         }
-    }
+    }*/
 }

@@ -4,7 +4,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.thymeleaf.standard.expression.Each;
+//import org.thymeleaf.standard.expression.Each;
 
 public class Game {
     private final String gameId;
@@ -13,17 +13,17 @@ public class Game {
     private final String[][] grid;
     private int shotsFired;
 
-    public Game(String gameId, String teamName, List<Ship> ships2, char[][] grid2, int i) {
+    public Game(String gameId, String teamName, List<Ship> ships2, String[][] grid2, int i) {
         this.gameId = gameId;
         this.teamName = teamName;
         this.ships = new ArrayList<>();
         this.grid = new String[10][10];
-        initializeGrid();
+        initializeGrid(grid);
         placeShips(); // You need to implement this method
         this.shotsFired = 0;
     }
 
-    private void initializeGrid() {
+    private void initializeGrid(String[][] grid) {
         // Initialize the grid with empty cells
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -41,12 +41,6 @@ public class Game {
         // T = Torpedo Boats: 4* Each occupies 1 square
         int randomRow;
         int randomColumn;
-        /*for (int i=0; i<10; i++){
-            randomRow[i] = 0;
-        }
-        for (i=0; i<10; i++){
-            randomColumn[i] = 0;
-        }/* */
 
         //Placement strategy :
         // - First determine randomly the square where the head of the boat is
@@ -123,7 +117,7 @@ public class Game {
         while(empty == 0){
             randomColumn = ThreadLocalRandom.current().nextInt(3, 9);
             randomRow = ThreadLocalRandom.current().nextInt(3, 9);
-            if(grid[randomColumn][randomRow] == "A"){
+            if(grid[randomColumn][randomRow] == " "){
                 column  = (char)(randomColumn+64);
                 C1.getCoordinates(C1).add("" + column + randomRow);
                 grid[randomColumn][randomRow] = "C1";
@@ -133,8 +127,8 @@ public class Game {
         }
 
         //Way Cruiser's going
-        //For the first cruiser, only 1 direction can be occupied by the aircraft
-        if(grid[randomColumn][randomRow+1] != "A" || grid[randomColumn][randomRow+2] != "A"){
+        //For the first cruiser, 1 direction can be occupied by the aircraft MAXIMUM
+        if(grid[randomColumn][randomRow+1] == "A" || grid[randomColumn][randomRow+2] == "A"){
             //1 means down, 2 left, 3 right
             direction = ThreadLocalRandom.current().nextInt(1, 4);
             switch (direction) {
@@ -167,7 +161,7 @@ public class Game {
                     break;
             }
         }
-        else if (grid[randomColumn][randomRow-1] != "A" || grid[randomColumn][randomRow-2] != "A"){
+        else if (grid[randomColumn][randomRow-1] == "A" || grid[randomColumn][randomRow-2] == "A"){
             //1 means up, 2 left, 3 right
             direction = ThreadLocalRandom.current().nextInt(1, 4);
             switch (direction) {
@@ -200,7 +194,7 @@ public class Game {
                     break;
             }
         }
-        else if(grid[randomColumn-1][randomRow] != "A" || grid[randomColumn-2][randomRow] != "A"){
+        else if(grid[randomColumn-1][randomRow] == "A" || grid[randomColumn-2][randomRow] == "A"){
             //1 means up, 2 down, 3 right
             direction = ThreadLocalRandom.current().nextInt(1, 4);
             switch (direction) {
@@ -231,7 +225,7 @@ public class Game {
                     break;
             }
         }
-        else if(grid[randomColumn+1][randomRow] != "A" || grid[randomColumn+2][randomRow] != "A"){
+        else if(grid[randomColumn+1][randomRow] == "A" || grid[randomColumn+2][randomRow] == "A"){
             //1 means up, 2 down, 3 left
             direction = ThreadLocalRandom.current().nextInt(1, 4);
             switch (direction) {
@@ -312,7 +306,7 @@ public class Game {
         Ship D3 = new Ship("D3", 2);
         ships.add(D1);
         ships.add(D2);
-        ships.add(D2);
+        ships.add(D3);
 
         //Torpedos making
         empty = 0;
@@ -320,8 +314,8 @@ public class Game {
         while(empty == 0){
             randomColumn = ThreadLocalRandom.current().nextInt(1, 11);
             randomRow = ThreadLocalRandom.current().nextInt(1, 11);
-            if(grid[randomColumn][randomRow] == "A"){
-                char columnT = (char)(randomColumn+64);
+            if(grid[randomColumn][randomRow] == " "){
+                column = (char)(randomColumn+64);
                 T1.getCoordinates(T1).add("" + column + randomRow); 
                 grid[randomColumn][randomRow] = "T1";
                 ships.add(T1);
@@ -334,8 +328,8 @@ public class Game {
         while(empty == 0){
             randomColumn = ThreadLocalRandom.current().nextInt(1, 11);
             randomRow = ThreadLocalRandom.current().nextInt(1, 11);
-            if(grid[randomColumn][randomRow] == "A"){
-                char columnT = (char)(randomColumn+64);
+            if(grid[randomColumn][randomRow] == " "){
+                column = (char)(randomColumn+64);
                 T2.getCoordinates(T2).add("" + column + randomRow); 
                 grid[randomColumn][randomRow] = "T2";
                 ships.add(T2);
@@ -348,8 +342,8 @@ public class Game {
         while(empty == 0){
             randomColumn = ThreadLocalRandom.current().nextInt(1, 11);
             randomRow = ThreadLocalRandom.current().nextInt(1, 11);
-            if(grid[randomColumn][randomRow] == "A"){
-                char columnT = (char)(randomColumn+64);
+            if(grid[randomColumn][randomRow] == " "){
+                column = (char)(randomColumn+64);
                 T3.getCoordinates(T3).add("" + column + randomRow); 
                 grid[randomColumn][randomRow] = "T3";
                 ships.add(T3);
@@ -362,8 +356,8 @@ public class Game {
         while(empty == 0){
             randomColumn = ThreadLocalRandom.current().nextInt(1, 11);
             randomRow = ThreadLocalRandom.current().nextInt(1, 11);
-            if(grid[randomColumn][randomRow] == "A"){
-                char columnT = (char)(randomColumn+64);
+            if(grid[randomColumn][randomRow] == " "){
+                column = (char)(randomColumn+64);
                 T4.getCoordinates(T4).add("" + column + randomRow); 
                 grid[randomColumn][randomRow] = "T4";
                 ships.add(T4);
@@ -432,7 +426,7 @@ public class Game {
         }
     }
     
-    private static class Coordinate {
+    /*private static class Coordinate {
         private final int row;
         private final int column;
         private boolean isHit;
@@ -446,7 +440,7 @@ public class Game {
         public void markAsHit() {
             this.isHit = true;
         }
-    }
+    }*/
 
     // You may need additional methods for game logic, such as processing a fire command,
     // checking for a win, handling errors, etc.
