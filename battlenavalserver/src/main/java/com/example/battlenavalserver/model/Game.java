@@ -369,12 +369,183 @@ public class Game {
         }
         
         //Destroyers making
+        
+        //1st Destroyer's head
+        empty = 0;
         Ship D1 = new Ship("D1", 2);
+        while(empty == 0){
+            randomColumn = ThreadLocalRandom.current().nextInt(2, 10);
+            randomRow = ThreadLocalRandom.current().nextInt(2, 10);
+            if(grid[randomColumn][randomRow] == " "){
+                column = (char)(randomColumn+64);
+                D1.getCoordinates(D1).add("" + column + randomRow);
+                grid[randomColumn][randomRow] = "D1";
+                ships.add(D1);
+                empty = 1;
+            }
+        }
+
+        dir[0] = 1;
+        dir[1] = 2;
+        dir[2] = 3;
+        dir[3] = 4;
+        if(grid[randomColumn][randomRow+1] != " "){
+            dir[0] = 0;
+        }
+        if(grid[randomColumn][randomRow-1] != " "){
+            dir[1] = 0;
+        }
+        if(grid[randomColumn-1][randomRow] != " "){
+            dir[2] = 0;
+        }
+        if(grid[randomColumn+1][randomRow] != " "){
+            dir[3] = 0;
+        }
+
+        do{
+            direction = ThreadLocalRandom.current().nextInt(0, 4);
+        }while(dir[direction] == 0);
+
+        switch (direction) {
+            case 0:
+                D1.getCoordinates(D1).add("" + column + randomRow+1); 
+                grid[randomColumn][randomRow+1] = "D1";
+                break;
+            case 1:
+                D1.getCoordinates(D1).add("" + column + (randomRow-1));
+                grid[randomColumn][randomRow-1] = "D1";
+                break;
+            case 2:
+                column = (char)(randomColumn+63);
+                D1.getCoordinates(D1).add("" + column + randomRow);
+                grid[randomColumn-1][randomRow] = "D1";
+                break;
+            case 3:
+                column = (char)(randomColumn+65);
+                D1.getCoordinates(D1).add("" + column + randomRow);
+                grid[randomColumn+1][randomRow] = "D1";
+                break;
+            default:
+                break;
+        }
+
+        //2nd Destroyer's head
+        empty = 0;
         Ship D2 = new Ship("D2", 2);
+        while(empty == 0){
+            randomColumn = ThreadLocalRandom.current().nextInt(2, 10);
+            randomRow = ThreadLocalRandom.current().nextInt(2, 10);
+            if(grid[randomColumn][randomRow] == " "){
+                column = (char)(randomColumn+64);
+                D2.getCoordinates(D2).add("" + column + randomRow);
+                grid[randomColumn][randomRow] = "D2";
+                ships.add(D2);
+                empty = 1;
+            }
+        }
+
+        dir[0] = 1;
+        dir[1] = 2;
+        dir[2] = 3;
+        dir[3] = 4;
+        if(grid[randomColumn][randomRow+1] != " "){
+            dir[0] = 0;
+        }
+        if(grid[randomColumn][randomRow-1] != " "){
+            dir[1] = 0;
+        }
+        if(grid[randomColumn-1][randomRow] != " "){
+            dir[2] = 0;
+        }
+        if(grid[randomColumn+1][randomRow] != " "){
+            dir[3] = 0;
+        }
+
+        do{
+            direction = ThreadLocalRandom.current().nextInt(0, 4);
+        }while(dir[direction] == 0);
+
+        switch (direction) {
+            case 0:
+                D2.getCoordinates(D2).add("" + column + randomRow+1); 
+                grid[randomColumn][randomRow+1] = "D2";
+                break;
+            case 1:
+                D2.getCoordinates(D2).add("" + column + (randomRow-1));
+                grid[randomColumn][randomRow-1] = "D2";
+                break;
+            case 2:
+                column = (char)(randomColumn+63);
+                D2.getCoordinates(D2).add("" + column + randomRow);
+                grid[randomColumn-1][randomRow] = "D2";
+                break;
+            case 3:
+                column = (char)(randomColumn+65);
+                D2.getCoordinates(D2).add("" + column + randomRow);
+                grid[randomColumn+1][randomRow] = "D2";
+                break;
+            default:
+                break;
+        }
+
+
+        //3rd Destroyer's head
+        empty = 0;
         Ship D3 = new Ship("D3", 2);
-        ships.add(D1);
-        ships.add(D2);
-        ships.add(D3);
+        while(empty == 0){
+            randomColumn = ThreadLocalRandom.current().nextInt(2, 10);
+            randomRow = ThreadLocalRandom.current().nextInt(2, 10);
+            if(grid[randomColumn][randomRow] == " "){
+                column = (char)(randomColumn+64);
+                D3.getCoordinates(D3).add("" + column + randomRow);
+                grid[randomColumn][randomRow] = "D3";
+                ships.add(D3);
+                empty = 1;
+            }
+        }
+
+        dir[0] = 1;
+        dir[1] = 2;
+        dir[2] = 3;
+        dir[3] = 4;
+        if(grid[randomColumn][randomRow+1] != " "){
+            dir[0] = 0;
+        }
+        if(grid[randomColumn][randomRow-1] != " "){
+            dir[1] = 0;
+        }
+        if(grid[randomColumn-1][randomRow] != " "){
+            dir[2] = 0;
+        }
+        if(grid[randomColumn+1][randomRow] != " "){
+            dir[3] = 0;
+        }
+        do{
+            direction = ThreadLocalRandom.current().nextInt(0, 4);
+        }while(dir[direction] == 0);
+        switch (direction) {
+            case 0:
+                D3.getCoordinates(D3).add("" + column + randomRow+1); 
+                grid[randomColumn][randomRow+1] = "D3";
+                break;
+            case 1:
+                D3.getCoordinates(D3).add("" + column + (randomRow-1));
+                grid[randomColumn][randomRow-1] = "D3";
+                break;
+            case 2:
+                column = (char)(randomColumn+63);
+                D3.getCoordinates(D3).add("" + column + randomRow);
+                grid[randomColumn-1][randomRow] = "D3";
+                break;
+            case 3:
+                column = (char)(randomColumn+65);
+                D3.getCoordinates(D3).add("" + column + randomRow);
+                grid[randomColumn+1][randomRow] = "D3";
+                break;
+            default:
+                break;
+            }
+
 
         //Torpedos making
         empty = 0;
