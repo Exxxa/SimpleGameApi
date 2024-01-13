@@ -296,9 +296,77 @@ public class Game {
             }
         }
 
-
+        //2nd Cruiser's head
+        empty = 0;
         Ship C2 = new Ship("C2", 3);
-        ships.add(C2);
+        while(empty == 0){
+            randomColumn = ThreadLocalRandom.current().nextInt(3, 9);
+            randomRow = ThreadLocalRandom.current().nextInt(3, 9);
+            if(grid[randomColumn][randomRow] == " "){
+                column  = (char)(randomColumn+64);
+                C2.getCoordinates(C2).add("" + column + randomRow);
+                grid[randomColumn][randomRow] = "C2";
+                ships.add(C2);
+                empty = 1;
+            }
+        }
+
+        int dir[] = {1, 2, 3, 4};
+        if(grid[randomColumn][randomRow+1] != " " || grid[randomColumn][randomRow+2] != " "){
+            dir[0] = 0;
+        }
+        if(grid[randomColumn][randomRow-1] != " " || grid[randomColumn][randomRow-2] != " "){
+            dir[1] = 0;
+        }
+        if(grid[randomColumn-1][randomRow] != " " || grid[randomColumn-2][randomRow] != " "){
+            dir[2] = 0;
+        }
+        if(grid[randomColumn+1][randomRow] != " " || grid[randomColumn+2][randomRow] != " "){
+            dir[3] = 0;
+        }
+
+        
+        //here 0 means up, 1 down, 2 left, and 3 right 
+        do{
+            direction = ThreadLocalRandom.current().nextInt(0, 4);
+        }while(dir[direction] == 0);
+
+        switch (direction) {
+            case 0:
+                C2.getCoordinates(C2).add("" + column + randomRow+1); 
+                grid[randomColumn][randomRow+1] = "C2";
+
+                C2.getCoordinates(C2).add("" + column + randomRow+2); 
+                grid[randomColumn][randomRow+2] = "C2";
+                break;
+            case 1:
+                C2.getCoordinates(C2).add("" + column + (randomRow-1));
+                grid[randomColumn][randomRow-1] = "C2";
+
+                C2.getCoordinates(C2).add("" + column + (randomRow-2));
+                grid[randomColumn][randomRow-2] = "C2";
+                break;
+            case 2:
+                column = (char)(randomColumn+63);
+                C2.getCoordinates(C2).add("" + column + randomRow);
+                grid[randomColumn-1][randomRow] = "C2";
+
+                column = (char)(randomColumn+62);
+                C2.getCoordinates(C2).add("" + column + randomRow);
+                grid[randomColumn-2][randomRow] = "C2";
+                break;
+            case 3:
+                column = (char)(randomColumn+65);
+                C2.getCoordinates(C2).add("" + column + randomRow);
+                grid[randomColumn+1][randomRow] = "C2";
+
+                column = (char)(randomColumn+66);
+                C2.getCoordinates(C2).add("" + column + randomRow);
+                grid[randomColumn+2][randomRow] = "C2";
+                break;
+            default:
+                break;
+        }
         
         //Destroyers making
         Ship D1 = new Ship("D1", 2);
