@@ -2,6 +2,9 @@ package com.example.battlenavalserver.controller;
 
 import com.example.battlenavalserver.model.Game;
 import com.example.battlenavalserver.service.GameService;
+
+import java.util.UUID;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,14 +19,36 @@ public class GameController {
     }
 
     @PostMapping("/start")
-    public ResponseEntity<Game> startNewGame(@RequestParam String teamName, @RequestParam String suffix) {
-        Game newGame = gameService.startNewGame(teamName, suffix);
-        return ResponseEntity.ok(newGame);
+    public ResponseEntity<String> startGame(@RequestParam(value = "teamName", defaultValue = "Debugging-gorillas") String teamName) {
+        String gameId = UUID.randomUUID().toString(); // Generate a unique game ID
+        gameService.initializeGame(gameId, teamName);
+        return ResponseEntity.ok("Game started with ID: " + gameId);
     }
 
-    @PostMapping("/fire")
-    public ResponseEntity<String> fire(Game game, @RequestParam int row, @RequestParam int col) {
-        game.processFiring(game, row, col);
-        return ResponseEntity.ok("Firing processed");
+    @PostMapping("/{gameId}/fire")
+    public ResponseEntity<String> fireAt(
+            @PathVariable String gameId,
+            @RequestParam int lign,
+            @RequestParam int column) {
+        Game game = gameService.getGameById(gameId);
+        if (game == null) {
+            System.out.println("Game with ID " + gameId + " not found.");
+            return ResponseEntity.notFound().build();
+            }
+    
+        gameService.fireAt(game, lign, column);
+         return ResponseEntity.ok("Attack at (" + lign + ", " + column + ") in game " + gameId + " processed.");
+    }
+
+    // You can add more endpoints as needed
+
+    // Example: Get the game state
+    @GetMapping("/{gameId}")
+    public ResponseEntity<Game> getGame(@PathVariable String gameId) {
+        Game game = gameService.getGameById(gameId);
+        if (game == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(game);
     }
 }

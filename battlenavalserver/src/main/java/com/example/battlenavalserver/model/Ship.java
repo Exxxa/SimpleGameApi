@@ -1,64 +1,52 @@
 package com.example.battlenavalserver.model;
 
-import java.util.List;
 
 // Represents a ship in the game of Battleship
 public class Ship {
-    // Name of the ship
-    private final String name;
-    // Size of the ship (number of squares it occupies on the board)
-    private final int size;
-    // List of coordinates on the game board where the ship is located
-    private List<String> coordinates;
-    // Number of times the ship has been hit
-    private int hits;
+    private ShipType type;
+    private int size;
+    private int hitCount;
 
-    // Constructor for the Ship class
-    // Sets the name and size of the ship, and initializes the hits to 0
-    public Ship(String name, int size) {
-        this.name = name;
-        this.size = size;
-        this.hits = 0;
+    public Ship(ShipType type) {
+        this.type = type;
+        this.size = type.getSize();
+        this.hitCount = 0;
     }
 
-    // Returns the name of the ship
-    public String getName() {
-        return this.name;
+    public ShipType getType() {
+        return type;
     }
 
-    // Returns the size of the ship
     public int getSize() {
-        return this.size;
+        return size;
     }
 
-    // Returns the number of hits the ship has received
-    public int getHits() {
-        return this.hits;
+    public int getHitCount() {
+        return hitCount;
     }
 
-    // Returns the list of coordinates where the ship is located
-    // Note: This method takes a Ship object as a parameter, but it is not used in the implementation
-    public List<String> getCoordinates(Ship ship){
-        return ship.coordinates;
-    }
-
-    // Adds a coordinate to the list of coordinates where the ship is located
-    public void setCoordinates(String coordinates) {
-        this.coordinates.add(coordinates);
-    }
-
-    // Increments the number of hits the ship has received
     public void hit() {
-        this.hits++;
+        hitCount++;
     }
 
-    // Returns true if the ship has been sunk (i.e. the number of hits is greater than or equal to the size of the ship)
     public boolean isSunk() {
-        return this.hits >= this.size;
+        return hitCount == size;
     }
 
-    // Returns the size of the ship
-    public int getLength() {
-        return this.size;
+    public enum ShipType {
+        AIRCRAFT_CARRIER(4),
+        CRUISER(3),
+        DESTROYER(2),
+        TORPEDO_BOAT(1);
+
+        private int size;
+
+        ShipType(int size) {
+            this.size = size;
+        }
+
+        public int getSize() {
+            return size;
+        }
     }
 }
