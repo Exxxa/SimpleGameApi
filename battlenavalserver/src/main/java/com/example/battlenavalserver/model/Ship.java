@@ -30,6 +30,10 @@ public class Ship {
         return ship.coordinates;
     }
 
+    public void setCoordinates(String coordinates) {
+        this.coordinates.add(coordinates);
+    }
+
     public void hit() {
         this.hits++;
     }

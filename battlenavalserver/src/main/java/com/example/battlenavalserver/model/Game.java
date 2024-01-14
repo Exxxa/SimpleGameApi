@@ -9,15 +9,15 @@ import java.util.List;
 public class Game {
     private final String gameId;
     private final String teamName;
-    private final List<Ship> ships;
-    private final String[][] grid;
+    private List<Ship> ships;
+    public String[][] grid;
     private int shotsFired;
 
     public Game(String gameId, String teamName, List<Ship> ships2, String[][] grid2, int i) {
         this.gameId = gameId;
         this.teamName = teamName;
         this.ships = new ArrayList<>();
-        this.grid = new String[10][10];
+        grid = new String[10][10];
         initializeGrid(grid);
         placeShips(); // You need to implement this method
         this.shotsFired = 0;
@@ -39,23 +39,25 @@ public class Game {
         // C = Cruisers: 2* Each occupies 3 squares
         // D = Destroyers: 3* Each occupies 2 squares
         // T = Torpedo Boats: 4* Each occupies 1 square
-        int randomRow;
-        int randomColumn;
+        
+        //Conversion to to char from int : a = 1; (char)(a+64) (1 becomes A, 2 becomes B, ...)
 
         //Placement strategy :
         // - First determine randomly the square where the head of the boat is
         // - Then determine randomly the way the boat is going:
         // meaning 1 up, 2 down, 3 left, 4 right
+        int randomRow;
+        int randomColumn;
 
         //Aicraft making
         Ship A = new Ship("A", 4);
-        ships.add(A);
         //Aircraft's head
         randomColumn = ThreadLocalRandom.current().nextInt(4, 8);
         randomRow = ThreadLocalRandom.current().nextInt(4, 8);
         char column = (char)(randomColumn+64);
-        A.getCoordinates(A).add("" + column + randomRow);
+        A.setCoordinates("" + column + randomRow);
         grid[randomColumn][randomRow] = "A";
+        ships.add(A);
         
         //Way Aircraft's going
         int direction = ThreadLocalRandom.current().nextInt(1, 5);
@@ -603,8 +605,6 @@ public class Game {
                 empty = 1;
             }
         }
-
-        //Conversion to to char from int : (char)(a+64) (1 becomes A, 2 becomes B, ...)
     }
 
     public String getGameId() {
@@ -636,35 +636,30 @@ public class Game {
             return "Coordinates not on the board";  
         }
     
-        String cellStatus = grid[row - 1][column - 1];
-        switch (cellStatus) {
-            case "A":  // Empty cell - miss
-                grid[row - 1][column - 1] = "M";
-                incrementShotsFired();
-                return "miss";
-            case "S":  // Ship cell - hit
-                grid[row - 1][column - 1] = "H";
-                incrementShotsFired();
-    
-                /*for (Ship ship : ships) {
-                    if (ship.isHit(row, column)) {
-                        ship.markCoordinateAsHit(row, column);
-                        if (ship.isSunk()) {
-                            return "sunk";
-                        }
-                        return "hit";
+        else if (grid[row][column] == " " || grid[row][column] == "H"){
+            incrementShotsFired();
+            return "miss";
+        }
+        else{
+            
+            grid[row][column] = "H";
+            incrementShotsFired();
+
+            char col = (char)(column+64);
+            
+            for (Ship ship : ships) {
+                if (ship.getCoordinates(ship).contains("" + col + row) ) {
+                    ship.hit();
+                    if (ship.isSunk()) {
+                        return "sunk";
                     }
-                }*/
-                return "Unexpected error in processing hit"; 
-            case "M":  // Already missed - treat as a miss
-                return "miss";
-            case "H":  // Already hit - treat as a hit
-                return "hit";
-            default:
-                return "Unexpected cell status";
+                    return "hit";
+                }
+            }
+            return "Unexpected error in processing hit";
         }
     }
-    
+
     /*private static class Coordinate {
         private final int row;
         private final int column;

@@ -13,14 +13,14 @@ public class GameService {
     private static final int GRID_SIZE = 10;
     private static final int NUM_SHIPS = 10;
 
-    /*public static Game startNewGame(String teamName, String suffix) {
+    public static Game startNewGame(String teamName, String suffix) {
         String[][] grid = new String[GRID_SIZE][GRID_SIZE];
         initializeGrid(grid);
 
         List<Ship> ships = placeShipsOnGrid(grid);
 
         return new Game(teamName, suffix, ships, grid, 0);
-    }*/
+    }
 
     public static void fire(Game game, int row, int col) {
         // Existing fire logic...
@@ -34,20 +34,20 @@ public class GameService {
         }
     }
 
-    /*private static List<Ship> placeShipsOnGrid(String[][] grid) {
+    private static List<Ship> placeShipsOnGrid(String[][] grid) {
         List<Ship> ships = new ArrayList<>();
 
         // Implement logic to randomly place ships on the grid
         // For simplicity, let's place one ship at a fixed location for now
-        Ship ship = new Ship("Aircraft Carrier", 4, 0, 0, true);
+        /*Ship ship = new Ship("Aircraft Carrier", 4, 0, 0, true);
         placeShip(grid, ship);
-        ships.add(ship);
+        ships.add(ship)*/
 
         // Add logic to place other types of ships...
 
         return ships;
     }
-
+    /*
     private static void placeShip(char[][] grid, Ship ship) {
         int length = ship.getLength();
 
