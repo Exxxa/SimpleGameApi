@@ -1,6 +1,8 @@
 package com.example.battlenavalserver.service;
 
 
+import org.springframework.stereotype.Service;
+
 import com.example.battlenavalserver.model.Game;
 //import com.example.battlenavalserver.model.Ship;
 import com.example.battlenavalserver.repository.GameRepository;
@@ -9,8 +11,8 @@ import com.example.battlenavalserver.repository.GameRepository;
 //import java.util.ArrayList;
 //import java.util.List;
 
+@Service
 public class GameService {
-
     private static final int GRID_SIZE = 10;
 
     private final GameRepository gameRepository;

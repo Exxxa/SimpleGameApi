@@ -5,6 +5,9 @@ import com.example.battlenavalserver.model.Game;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class GameRepository {
     /**
      * A map to store all the games in the repository.
