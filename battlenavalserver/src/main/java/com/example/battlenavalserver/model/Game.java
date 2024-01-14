@@ -18,12 +18,12 @@ public class Game {
         this.teamName = teamName;
         this.ships = new ArrayList<>();
         grid = new String[10][10];
-        initializeGrid(grid);
+        initializeGrid(grid2);
         placeShips(); // You need to implement this method
         this.shotsFired = 0;
     }
 
-    private void initializeGrid(String[][] grid) {
+    public void initializeGrid(String[][] grid) {
         // Initialize the grid with empty cells
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -32,7 +32,7 @@ public class Game {
         }
     }
 
-    private void placeShips() {
+    public void placeShips() {
         // You need to implement the logic for placing ships on the grid
         // based on the game rules (size, orientation, no overlapping, etc.)
         // A = Aircraft carrier: 1* 4 conscutive squares
