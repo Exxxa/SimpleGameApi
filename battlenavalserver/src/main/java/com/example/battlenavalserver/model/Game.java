@@ -8,16 +8,17 @@ import java.util.List;
 public class Game {
     private final String gameId;
     private final String teamName;
-    private List<Ship> ships;
+    public List<Ship> ships;
     public String[][] grid;
     private int shotsFired;
 
-    public Game(String gameId, String teamName, List<Ship> ships2, String[][] grid2, int i) {
+    public Game(String gameId, String teamName, String[][] grid2, int i) {
         this.gameId = gameId;
         this.teamName = teamName;
         this.ships = new ArrayList<>();
         grid = new String[10][10];
         initializeGrid(grid2);
+        this.ships = placeShips();
         placeShips(); // You need to implement this method
         this.shotsFired = 0;
     }
@@ -31,7 +32,7 @@ public class Game {
         }
     }
 
-    public void placeShips() {
+    public List<Ship> placeShips() {
         // You need to implement the logic for placing ships on the grid
         // based on the game rules (size, orientation, no overlapping, etc.)
         // A = Aircraft carrier: 1* 4 conscutive squares
@@ -604,6 +605,7 @@ public class Game {
                 empty = 1;
             }
         }
+        return ships; 
     }
 
     public String getGameId() {
@@ -630,7 +632,7 @@ public class Game {
         shotsFired++;
     }
 
-    public String processFiring(int row, int column) {
+    public String processFiring(Game game, int row, int column) {
         if (row < 1 || row > 10 || column < 1 || column > 10) {
             return "Coordinates not on the board";  
         }

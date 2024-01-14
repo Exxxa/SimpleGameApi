@@ -22,8 +22,8 @@ public class GameController {
     }
 
     @PostMapping("/fire")
-    public ResponseEntity<String> fire(@RequestParam String gameId, @RequestParam int row, @RequestParam int col) {
-        gameService.processFiring(gameId, row, col);
+    public ResponseEntity<String> fire(Game game, @RequestParam int row, @RequestParam int col) {
+        game.processFiring(game, row, col);
         return ResponseEntity.ok("Firing processed");
     }
 }
