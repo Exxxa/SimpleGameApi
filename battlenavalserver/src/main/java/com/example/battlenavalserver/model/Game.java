@@ -63,49 +63,49 @@ public class Game {
         int direction = ThreadLocalRandom.current().nextInt(1, 5);
         switch (direction) {
             case 1:
-                A.getCoordinates(A).add("" + column + randomRow+1); 
+                A.setCoordinates("" + column + randomRow+1); 
                 grid[randomColumn][randomRow+1] = "A";
 
-                A.getCoordinates(A).add("" + column + randomRow+2); 
+                A.setCoordinates("" + column + randomRow+2); 
                 grid[randomColumn][randomRow+2] = "A";
 
-                A.getCoordinates(A).add("" + column + randomRow+3); 
+                A.setCoordinates("" + column + randomRow+3); 
                 grid[randomColumn][randomRow+3] = "A";
                 break;
             case 2:
-                A.getCoordinates(A).add("" + column + (randomRow-1)); 
+                A.setCoordinates("" + column + (randomRow-1)); 
                 grid[randomColumn][randomRow-1] = "A";
 
-                A.getCoordinates(A).add("" + column + (randomRow-2)); 
+                A.setCoordinates("" + column + (randomRow-2)); 
                 grid[randomColumn][randomRow-2] = "A";
 
-                A.getCoordinates(A).add("" + column + (randomRow-3)); 
+                A.setCoordinates("" + column + (randomRow-3)); 
                 grid[randomColumn][randomRow-3] = "A";
                 break;
             case 3:
                 column = (char)(randomColumn+63);
-                A.getCoordinates(A).add("" + column + randomRow); 
+                A.setCoordinates("" + column + randomRow); 
                 grid[randomColumn-1][randomRow] = "A";
 
                 column = (char)(randomColumn+62);
-                A.getCoordinates(A).add("" + column + randomRow); 
+                A.setCoordinates("" + column + randomRow); 
                 grid[randomColumn-2][randomRow] = "A";
 
                 column = (char)(randomColumn+61);
-                A.getCoordinates(A).add("" + column + randomRow); 
+                A.setCoordinates("" + column + randomRow); 
                 grid[randomColumn-3][randomRow] = "A";
                 break;
             case 4:
                 column = (char)(randomColumn+65);
-                A.getCoordinates(A).add("" + column + randomRow); 
+                A.setCoordinates("" + column + randomRow); 
                 grid[randomColumn+1][randomRow] = "A";
 
                 column = (char)(randomColumn+66);
-                A.getCoordinates(A).add("" + column + randomRow);  
+                A.setCoordinates("" + column + randomRow);  
                 grid[randomColumn+2][randomRow] = "A";
 
                 column = (char)(randomColumn+67);
-                A.getCoordinates(A).add("" + column + randomRow); 
+                A.setCoordinates("" + column + randomRow); 
                 grid[randomColumn+3][randomRow] = "A";
                 break;    
             default:
@@ -121,7 +121,7 @@ public class Game {
             randomRow = ThreadLocalRandom.current().nextInt(3, 9);
             if(grid[randomColumn][randomRow] == " "){
                 column  = (char)(randomColumn+64);
-                C1.getCoordinates(C1).add("" + column + randomRow);
+                C1.setCoordinates("" + column + randomRow);
                 grid[randomColumn][randomRow] = "C1";
                 ships.add(C1);
                 empty = 1;
@@ -135,28 +135,28 @@ public class Game {
             direction = ThreadLocalRandom.current().nextInt(1, 4);
             switch (direction) {
                 case 1:
-                    C1.getCoordinates(C1).add("" + column + (randomRow-1));
+                    C1.setCoordinates("" + column + (randomRow-1));
                     grid[randomColumn][randomRow-1] = "C1";
 
-                    C1.getCoordinates(C1).add("" + column + (randomRow-2));
+                    C1.setCoordinates("" + column + (randomRow-2));
                     grid[randomColumn][randomRow-2] = "C1";
                     break;
                 case 2:
                     column = (char)(randomColumn+63);
-                    C1.getCoordinates(C1).add("" + column + randomRow);
+                    C1.setCoordinates("" + column + randomRow);
                     grid[randomColumn-1][randomRow] = "C1";
 
                     column = (char)(randomColumn+62);
-                    C1.getCoordinates(C1).add("" + column + randomRow);
+                    C1.setCoordinates("" + column + randomRow);
                     grid[randomColumn-2][randomRow] = "C1";
                     break;
                 case 3:
                     column = (char)(randomColumn+65);
-                    C1.getCoordinates(C1).add("" + column + randomRow);
+                    C1.setCoordinates("" + column + randomRow);
                     grid[randomColumn+1][randomRow] = "C1";
 
                     column = (char)(randomColumn+66);
-                    C1.getCoordinates(C1).add("" + column + randomRow);
+                    C1.setCoordinates("" + column + randomRow);
                     grid[randomColumn+2][randomRow] = "C1";
                     break;
                 default:
@@ -168,28 +168,28 @@ public class Game {
             direction = ThreadLocalRandom.current().nextInt(1, 4);
             switch (direction) {
                 case 1:
-                    C1.getCoordinates(C1).add("" + column + randomRow+1); 
+                    C1.setCoordinates("" + column + randomRow+1); 
                     grid[randomColumn][randomRow+1] = "C1";
 
-                    C1.getCoordinates(C1).add("" + column + randomRow+2); 
+                    C1.setCoordinates("" + column + randomRow+2); 
                     grid[randomColumn][randomRow+2] = "C1";
                     break;
                 case 2:
                     column = (char)(randomColumn+63);
-                    C1.getCoordinates(C1).add("" + column + randomRow);
+                    C1.setCoordinates("" + column + randomRow);
                     grid[randomColumn-1][randomRow] = "C1";
 
                     column = (char)(randomColumn+62);
-                    C1.getCoordinates(C1).add("" + column + randomRow);
+                    C1.setCoordinates("" + column + randomRow);
                     grid[randomColumn-2][randomRow] = "C1";
                     break;
                 case 3:
                     column = (char)(randomColumn+65);
-                    C1.getCoordinates(C1).add("" + column + randomRow);
+                    C1.setCoordinates("" + column + randomRow);
                     grid[randomColumn+1][randomRow] = "C1";
 
                     column = (char)(randomColumn+66);
-                    C1.getCoordinates(C1).add("" + column + randomRow);
+                    C1.setCoordinates("" + column + randomRow);
                     grid[randomColumn+2][randomRow] = "C1";
                     break;
                 default:
@@ -201,26 +201,26 @@ public class Game {
             direction = ThreadLocalRandom.current().nextInt(1, 4);
             switch (direction) {
                 case 1:
-                    C1.getCoordinates(C1).add("" + column + randomRow+1); 
+                    C1.setCoordinates("" + column + randomRow+1); 
                     grid[randomColumn][randomRow+1] = "C1";
 
-                    C1.getCoordinates(C1).add("" + column + randomRow+2); 
+                    C1.setCoordinates("" + column + randomRow+2); 
                     grid[randomColumn][randomRow+2] = "C1";
                     break;
                 case 2:
-                    C1.getCoordinates(C1).add("" + column + (randomRow-1));
+                    C1.setCoordinates("" + column + (randomRow-1));
                     grid[randomColumn][randomRow-1] = "C1";
 
-                    C1.getCoordinates(C1).add("" + column + (randomRow-2)); 
+                    C1.setCoordinates("" + column + (randomRow-2)); 
                     grid[randomColumn][randomRow-2] = "C1";
                     break;
                 case 3:
                     column = (char)(randomColumn+65);
-                    C1.getCoordinates(C1).add("" + column + randomRow);
+                    C1.setCoordinates("" + column + randomRow);
                     grid[randomColumn+1][randomRow] = "C1";
 
                     column = (char)(randomColumn+66);
-                    C1.getCoordinates(C1).add("" + column + randomRow);
+                    C1.setCoordinates("" + column + randomRow);
                     grid[randomColumn+2][randomRow] = "C1";
                     break;
                 default:
@@ -232,26 +232,26 @@ public class Game {
             direction = ThreadLocalRandom.current().nextInt(1, 4);
             switch (direction) {
                 case 1:
-                    C1.getCoordinates(C1).add("" + column + randomRow+1); 
+                    C1.setCoordinates("" + column + randomRow+1); 
                     grid[randomColumn][randomRow+1] = "C1";
 
-                    C1.getCoordinates(C1).add("" + column + randomRow+2); 
+                    C1.setCoordinates("" + column + randomRow+2); 
                     grid[randomColumn][randomRow+2] = "C1";
                     break;
                 case 2:
-                    C1.getCoordinates(C1).add("" + column + (randomRow-1));
+                    C1.setCoordinates("" + column + (randomRow-1));
                     grid[randomColumn][randomRow-1] = "C1";
 
-                    C1.getCoordinates(C1).add("" + column + (randomRow-2));
+                    C1.setCoordinates("" + column + (randomRow-2));
                     grid[randomColumn][randomRow-2] = "C1";
                     break;
                 case 3:
                     column = (char)(randomColumn+63);
-                    C1.getCoordinates(C1).add("" + column + randomRow);
+                    C1.setCoordinates("" + column + randomRow);
                     grid[randomColumn-1][randomRow] = "C1";
 
                     column = (char)(randomColumn+62);
-                    C1.getCoordinates(C1).add("" + column + randomRow);
+                    C1.setCoordinates("" + column + randomRow);
                     grid[randomColumn-2][randomRow] = "C1";
                     break;
                 default:
@@ -262,35 +262,35 @@ public class Game {
             direction = ThreadLocalRandom.current().nextInt(1, 5);
             switch (direction) {
                 case 1:
-                    C1.getCoordinates(C1).add("" + column + randomRow+1); 
+                    C1.setCoordinates("" + column + randomRow+1); 
                     grid[randomColumn][randomRow+1] = "C1";
 
-                    C1.getCoordinates(C1).add("" + column + randomRow+2); 
+                    C1.setCoordinates("" + column + randomRow+2); 
                     grid[randomColumn][randomRow+2] = "C1";
                     break;
                 case 2:
-                    C1.getCoordinates(C1).add("" + column + (randomRow-1));
+                    C1.setCoordinates("" + column + (randomRow-1));
                     grid[randomColumn][randomRow-1] = "C1";
 
-                    C1.getCoordinates(C1).add("" + column + (randomRow-2));
+                    C1.setCoordinates("" + column + (randomRow-2));
                     grid[randomColumn][randomRow-2] = "C1";
                     break;
                 case 3:
                     column = (char)(randomColumn+63);
-                    C1.getCoordinates(C1).add("" + column + randomRow);
+                    C1.setCoordinates("" + column + randomRow);
                     grid[randomColumn-1][randomRow] = "C1";
 
                     column = (char)(randomColumn+62);
-                    C1.getCoordinates(C1).add("" + column + randomRow);
+                    C1.setCoordinates("" + column + randomRow);
                     grid[randomColumn-2][randomRow] = "C1";
                     break;
                 case 4:
                     column = (char)(randomColumn+65);
-                    C1.getCoordinates(C1).add("" + column + randomRow);
+                    C1.setCoordinates("" + column + randomRow);
                     grid[randomColumn+1][randomRow] = "C1";
 
                     column = (char)(randomColumn+66);
-                    C1.getCoordinates(C1).add("" + column + randomRow);
+                    C1.setCoordinates("" + column + randomRow);
                     grid[randomColumn+2][randomRow] = "C1";
                     break;    
                 default:
@@ -306,7 +306,7 @@ public class Game {
             randomRow = ThreadLocalRandom.current().nextInt(3, 9);
             if(grid[randomColumn][randomRow] == " "){
                 column  = (char)(randomColumn+64);
-                C2.getCoordinates(C2).add("" + column + randomRow);
+                C2.setCoordinates("" + column + randomRow);
                 grid[randomColumn][randomRow] = "C2";
                 ships.add(C2);
                 empty = 1;
@@ -335,35 +335,35 @@ public class Game {
 
         switch (direction) {
             case 0:
-                C2.getCoordinates(C2).add("" + column + randomRow+1); 
+                C2.setCoordinates("" + column + randomRow+1); 
                 grid[randomColumn][randomRow+1] = "C2";
 
-                C2.getCoordinates(C2).add("" + column + randomRow+2); 
+                C2.setCoordinates("" + column + randomRow+2); 
                 grid[randomColumn][randomRow+2] = "C2";
                 break;
             case 1:
-                C2.getCoordinates(C2).add("" + column + (randomRow-1));
+                C2.setCoordinates("" + column + (randomRow-1));
                 grid[randomColumn][randomRow-1] = "C2";
 
-                C2.getCoordinates(C2).add("" + column + (randomRow-2));
+                C2.setCoordinates("" + column + (randomRow-2));
                 grid[randomColumn][randomRow-2] = "C2";
                 break;
             case 2:
                 column = (char)(randomColumn+63);
-                C2.getCoordinates(C2).add("" + column + randomRow);
+                C2.setCoordinates("" + column + randomRow);
                 grid[randomColumn-1][randomRow] = "C2";
 
                 column = (char)(randomColumn+62);
-                C2.getCoordinates(C2).add("" + column + randomRow);
+                C2.setCoordinates("" + column + randomRow);
                 grid[randomColumn-2][randomRow] = "C2";
                 break;
             case 3:
                 column = (char)(randomColumn+65);
-                C2.getCoordinates(C2).add("" + column + randomRow);
+                C2.setCoordinates("" + column + randomRow);
                 grid[randomColumn+1][randomRow] = "C2";
 
                 column = (char)(randomColumn+66);
-                C2.getCoordinates(C2).add("" + column + randomRow);
+                C2.setCoordinates("" + column + randomRow);
                 grid[randomColumn+2][randomRow] = "C2";
                 break;
             default:
@@ -380,7 +380,7 @@ public class Game {
             randomRow = ThreadLocalRandom.current().nextInt(2, 10);
             if(grid[randomColumn][randomRow] == " "){
                 column = (char)(randomColumn+64);
-                D1.getCoordinates(D1).add("" + column + randomRow);
+                D1.setCoordinates("" + column + randomRow);
                 grid[randomColumn][randomRow] = "D1";
                 ships.add(D1);
                 empty = 1;
@@ -410,21 +410,21 @@ public class Game {
 
         switch (direction) {
             case 0:
-                D1.getCoordinates(D1).add("" + column + randomRow+1); 
+                D1.setCoordinates("" + column + randomRow+1); 
                 grid[randomColumn][randomRow+1] = "D1";
                 break;
             case 1:
-                D1.getCoordinates(D1).add("" + column + (randomRow-1));
+                D1.setCoordinates("" + column + (randomRow-1));
                 grid[randomColumn][randomRow-1] = "D1";
                 break;
             case 2:
                 column = (char)(randomColumn+63);
-                D1.getCoordinates(D1).add("" + column + randomRow);
+                D1.setCoordinates("" + column + randomRow);
                 grid[randomColumn-1][randomRow] = "D1";
                 break;
             case 3:
                 column = (char)(randomColumn+65);
-                D1.getCoordinates(D1).add("" + column + randomRow);
+                D1.setCoordinates("" + column + randomRow);
                 grid[randomColumn+1][randomRow] = "D1";
                 break;
             default:
@@ -439,7 +439,7 @@ public class Game {
             randomRow = ThreadLocalRandom.current().nextInt(2, 10);
             if(grid[randomColumn][randomRow] == " "){
                 column = (char)(randomColumn+64);
-                D2.getCoordinates(D2).add("" + column + randomRow);
+                D2.setCoordinates("" + column + randomRow);
                 grid[randomColumn][randomRow] = "D2";
                 ships.add(D2);
                 empty = 1;
@@ -469,21 +469,21 @@ public class Game {
 
         switch (direction) {
             case 0:
-                D2.getCoordinates(D2).add("" + column + randomRow+1); 
+                D2.setCoordinates("" + column + randomRow+1); 
                 grid[randomColumn][randomRow+1] = "D2";
                 break;
             case 1:
-                D2.getCoordinates(D2).add("" + column + (randomRow-1));
+                D2.setCoordinates("" + column + (randomRow-1));
                 grid[randomColumn][randomRow-1] = "D2";
                 break;
             case 2:
                 column = (char)(randomColumn+63);
-                D2.getCoordinates(D2).add("" + column + randomRow);
+                D2.setCoordinates("" + column + randomRow);
                 grid[randomColumn-1][randomRow] = "D2";
                 break;
             case 3:
                 column = (char)(randomColumn+65);
-                D2.getCoordinates(D2).add("" + column + randomRow);
+                D2.setCoordinates("" + column + randomRow);
                 grid[randomColumn+1][randomRow] = "D2";
                 break;
             default:
@@ -499,7 +499,7 @@ public class Game {
             randomRow = ThreadLocalRandom.current().nextInt(2, 10);
             if(grid[randomColumn][randomRow] == " "){
                 column = (char)(randomColumn+64);
-                D3.getCoordinates(D3).add("" + column + randomRow);
+                D3.setCoordinates("" + column + randomRow);
                 grid[randomColumn][randomRow] = "D3";
                 ships.add(D3);
                 empty = 1;
@@ -527,21 +527,21 @@ public class Game {
         }while(dir[direction] == 0);
         switch (direction) {
             case 0:
-                D3.getCoordinates(D3).add("" + column + randomRow+1); 
+                D3.setCoordinates("" + column + randomRow+1); 
                 grid[randomColumn][randomRow+1] = "D3";
                 break;
             case 1:
-                D3.getCoordinates(D3).add("" + column + (randomRow-1));
+                D3.setCoordinates("" + column + (randomRow-1));
                 grid[randomColumn][randomRow-1] = "D3";
                 break;
             case 2:
                 column = (char)(randomColumn+63);
-                D3.getCoordinates(D3).add("" + column + randomRow);
+                D3.setCoordinates("" + column + randomRow);
                 grid[randomColumn-1][randomRow] = "D3";
                 break;
             case 3:
                 column = (char)(randomColumn+65);
-                D3.getCoordinates(D3).add("" + column + randomRow);
+                D3.setCoordinates("" + column + randomRow);
                 grid[randomColumn+1][randomRow] = "D3";
                 break;
             default:
@@ -585,7 +585,7 @@ public class Game {
             randomRow = ThreadLocalRandom.current().nextInt(1, 11);
             if(grid[randomColumn][randomRow] == " "){
                 column = (char)(randomColumn+64);
-                T3.getCoordinates(T3).add("" + column + randomRow); 
+                T3.setCoordinates("" + column + randomRow); 
                 grid[randomColumn][randomRow] = "T3";
                 ships.add(T3);
                 empty = 1;
@@ -599,7 +599,7 @@ public class Game {
             randomRow = ThreadLocalRandom.current().nextInt(1, 11);
             if(grid[randomColumn][randomRow] == " "){
                 column = (char)(randomColumn+64);
-                T4.getCoordinates(T4).add("" + column + randomRow); 
+                T4.setCoordinates("" + column + randomRow); 
                 grid[randomColumn][randomRow] = "T4";
                 ships.add(T4);
                 empty = 1;
