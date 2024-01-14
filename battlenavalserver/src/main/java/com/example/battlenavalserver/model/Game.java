@@ -4,7 +4,6 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.ArrayList;
 import java.util.List;
 
-//import org.thymeleaf.standard.expression.Each;
 
 public class Game {
     private final String gameId;

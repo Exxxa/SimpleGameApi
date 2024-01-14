@@ -20,10 +20,8 @@ public class GameService {
     }
 
     public Game startNewGame(String teamName, String suffix) {
-        String[][] grid = new char[GRID_SIZE][GRID_SIZE];
-        initializeGrid(grid);
-
-        List<Ship> ships = placeShips();
+        String[][] grid = new string[GRID_SIZE][GRID_SIZE];
+        List<Ship> ships = Game.placeShips();
 
         Game newGame = new Game(teamName, suffix, ships, grid, 0);
         gameRepository.saveGame(newGame); 
@@ -31,7 +29,8 @@ public class GameService {
         return newGame;
     }
 
-    public void processFiring(String gameId, int row, int col) {
+
+	public void processFiring(String gameId, int row, int col) {
         try {
             Game game = gameRepository.getGameById(gameId);
             game.processFiring(row, col);
