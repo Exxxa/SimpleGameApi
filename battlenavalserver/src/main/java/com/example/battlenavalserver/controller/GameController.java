@@ -3,6 +3,8 @@ package com.example.battlenavalserver.controller;
 import com.example.battlenavalserver.model.Game;
 import com.example.battlenavalserver.service.GameService;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,13 +16,14 @@ public class GameController {
     private GameService gameService;
 
     @PostMapping("/start")
-    public ResponseEntity<String> startGame(@RequestParam(value = "teamName", defaultValue = "Debugging-gorillas") String teamName, @RequestParam(value = "gameID") String gameID) {
-        gameService.initializeGame(gameID, teamName);
-        return ResponseEntity.ok("Game started with ID: " + gameID);
+    public ResponseEntity<Game> startGame(@RequestParam(value = "teamName", defaultValue = "Debugging-gorillas") String teamName) {
+        String gameId = UUID.randomUUID().toString(); 
+        Game game = gameService.initializeGame(gameId, teamName);
+        return ResponseEntity.ok(game);
     }
 
     @PostMapping("/{gameId}/fire")
-    public ResponseEntity<String> fireAt(
+    public ResponseEntity<String> fireAt(   
             @PathVariable String gameId,
             @RequestParam int lign,
             @RequestParam int column) {
@@ -42,9 +45,10 @@ public class GameController {
         }
         return ResponseEntity.ok(game);
     }
+    
     @GetMapping("/")
     public ResponseEntity<String> test() {
         
-        return ResponseEntity.ok("test");
+        return ResponseEntity.ok("Please go to http://localhost:8080/game/start to start a new game !");
     }
 }
