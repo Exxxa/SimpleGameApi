@@ -1,6 +1,7 @@
 package com.example.battlenavalserver.controller;
 
 import com.example.battlenavalserver.model.Game;
+import com.example.battlenavalserver.model.Case.ShotResult;
 import com.example.battlenavalserver.service.GameService;
 
 import java.util.UUID;
@@ -23,7 +24,7 @@ public class GameController {
     }
 
     @PostMapping("/{gameId}/fire")
-    public ResponseEntity<String> fireAt(   
+    public ResponseEntity<ShotResult> fireAt(   
             @PathVariable String gameId,
             @RequestParam int lign,
             @RequestParam int column) {
@@ -33,8 +34,8 @@ public class GameController {
             return ResponseEntity.notFound().build();
             }
     
-        String responseMessage =gameService.fireAt(game, lign, column);
-         return ResponseEntity.ok("Attack at (" + lign + ", " + column + ") in game " + gameId + " processed.\n"+ responseMessage);
+        ShotResult responseMessage =gameService.fireAt(game, lign, column);
+        return ResponseEntity.ok(responseMessage);
     }
 
     @GetMapping("/{gameId}")
