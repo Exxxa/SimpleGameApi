@@ -1,42 +1,36 @@
 package com.example.battlenavalclient.service;
 
-// HttpClientService.java
-
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.client.RestTemplate;
 
-/*
- * This class provides a simple HTTP client service using Spring's RestTemplate.
- */
+@SpringBootApplication
 public class HttpClientService {
 
-    /*
-     * The RestTemplate instance used to send HTTP requests.
-     */
-    private final RestTemplate restTemplate;
+	private static final Logger log = LoggerFactory.getLogger(HttpClientService.class);
 
-    /*
-     * Constructs a new HttpClientService instance with a new RestTemplate.
-     */
-    public HttpClientService() {
-        this.restTemplate = new RestTemplate();
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(HttpClientService.class, args);
+	}
 
-    /*
-     * Sends an HTTP request to the specified URL using the given method and request entity,
-     * and returns the response as a ResponseEntity of the specified response type.
-     *
-     * @param url           the URL to send the request to
-     * @param method        the HTTP method to use (GET, POST, PUT, DELETE, etc.)
-     * @param requestEntity the request entity (optional; may be null)
-     * @param responseType  the class type of the expected response body
-     * @param <T>           the type of the expected response body
-     * @return the ResponseEntity containing the response body, headers, and status code
-     */
-    public <T> ResponseEntity<T> sendRequest(String url, HttpMethod method, HttpEntity<?> requestEntity, Class<T> responseType) {
-        // Use the RestTemplate to send the HTTP request and get the ResponseEntity
-        return restTemplate.exchange(url, method, requestEntity, responseType);
-    }
+	@Bean
+	public RestTemplate restTemplate(RestTemplateBuilder builder) {
+		return builder.build();
+	}
+
+	@Bean
+	@Profile("!test")
+	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
+		return args -> {
+			Quote quote = restTemplate.getForObject(
+					"http://localhost:8080/api/random", Quote.class);
+			log.info(quote.toString());
+		};
+	}
 }
