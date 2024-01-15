@@ -5,18 +5,15 @@ import com.example.battlenavalserver.service.GameService;
 
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/game")
 public class GameController {
-
-    private final GameService gameService;
-
-    public GameController(GameService gameService) {
-        this.gameService = gameService;
-    }
+    @Autowired
+    private GameService gameService;
 
     @PostMapping("/start")
     public ResponseEntity<String> startGame(@RequestParam(value = "teamName", defaultValue = "Debugging-gorillas") String teamName) {

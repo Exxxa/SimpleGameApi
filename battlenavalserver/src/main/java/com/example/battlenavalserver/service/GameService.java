@@ -1,5 +1,7 @@
 package com.example.battlenavalserver.service;
 
+import org.springframework.stereotype.Service;
+
 import com.example.battlenavalserver.model.Case;
 import com.example.battlenavalserver.model.Game;
 import com.example.battlenavalserver.model.Ship;
@@ -9,18 +11,11 @@ import com.example.battlenavalserver.repository.GameRepository;
 /**
  * Service class responsible for managing game-related operations.
  */
+@Service
 public class GameService {
 
-    private final GameRepository gameRepository;
+    private  GameRepository gameRepository;
 
-    /**
-     * Constructor for GameService class.
-     *
-     * @param gameRepository The repository for managing game data.
-     */
-    public GameService(GameRepository gameRepository) {
-        this.gameRepository = gameRepository;
-    }
 
     /**
      * Initializes a new game with the provided game ID and team name.
