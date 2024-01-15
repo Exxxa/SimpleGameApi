@@ -33,8 +33,8 @@ public class GameController {
             return ResponseEntity.notFound().build();
             }
     
-        gameService.fireAt(game, lign, column);
-         return ResponseEntity.ok("Attack at (" + lign + ", " + column + ") in game " + gameId + " processed.");
+        String responseMessage =gameService.fireAt(game, lign, column);
+         return ResponseEntity.ok("Attack at (" + lign + ", " + column + ") in game " + gameId + " processed.\n"+ responseMessage);
     }
 
     @GetMapping("/{gameId}")
