@@ -16,6 +16,12 @@ public class GameService {
 
     private  GameRepository gameRepository;
 
+    /**
+     * Constructor for GameService class.
+     */
+    public GameService() {
+        this.gameRepository = new GameRepository();
+    }
 
     /**
      * Initializes a new game with the provided game ID and team name.
@@ -59,8 +65,14 @@ public class GameService {
     private static void placeShips(Game game) {
         // You can adjust these placements as needed
         game.placeShip(ShipType.AIRCRAFT_CARRIER, 0, 0, true);
+        game.placeShip(ShipType.CRUISER, 2, 9, false);
         game.placeShip(ShipType.CRUISER, 2, 3, false);
         game.placeShip(ShipType.DESTROYER, 5, 5, true);
+        game.placeShip(ShipType.DESTROYER, 4, 4, true);
+        game.placeShip(ShipType.DESTROYER, 5, 6, true);
+        game.placeShip(ShipType.TORPEDO_BOAT, 8, 2, false);
+        game.placeShip(ShipType.TORPEDO_BOAT, 8, 2, false);
+        game.placeShip(ShipType.TORPEDO_BOAT, 8, 2, false);
         game.placeShip(ShipType.TORPEDO_BOAT, 8, 2, false);
     }
 
