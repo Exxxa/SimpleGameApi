@@ -46,7 +46,15 @@ public class GameController {
         }
         return ResponseEntity.ok(game);
     }
-    
+    @GetMapping("/{getGameByteamName}")
+    public ResponseEntity<Game> getGameByteamName(@PathVariable String teamName) {
+        Game game = gameService.getGameByteamName(teamName);
+        if (game == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(game);
+    }
+
     @GetMapping("/")
     public ResponseEntity<String> test() {
         

@@ -49,6 +49,10 @@ public class GameService {
         return gameRepository.getGame(gameId);
     }
 
+    public Game getGameByteamName(String teamName) {
+        return gameRepository.getGame(teamName);
+    }
+
     /**
      * Saves the state of the provided game.
      *
