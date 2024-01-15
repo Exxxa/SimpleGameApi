@@ -42,4 +42,9 @@ public class GameController {
         }
         return ResponseEntity.ok(game);
     }
+    @GetMapping("/")
+    public ResponseEntity<String> test() {
+        
+        return ResponseEntity.ok("test");
+    }
 }
