@@ -40,9 +40,6 @@ public class GameController {
          return ResponseEntity.ok("Attack at (" + lign + ", " + column + ") in game " + gameId + " processed.");
     }
 
-    // You can add more endpoints as needed
-
-    // Example: Get the game state
     @GetMapping("/{gameId}")
     public ResponseEntity<Game> getGame(@PathVariable String gameId) {
         Game game = gameService.getGameById(gameId);
