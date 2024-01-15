@@ -83,13 +83,13 @@ public class GameService {
      * @param lign   Row index of the target case.
      * @param column Column index of the target case.
      */
-    public void fireAt(Game game, int lign, int column) {
+    public String fireAt(Game game, int lign, int column) {
         Case targetCase = game.getGrid().getGrid()[lign][column];
 
         // Check if the case has already been hit
         if (targetCase.isHit()) {
             System.out.println("This position has already been attacked. Choose a different one.");
-            return;
+            return "This position has already been attacked. Choose a different one.";
         }
         // Mark the case as hit
         targetCase.setHit(true);
@@ -97,12 +97,13 @@ public class GameService {
         Ship ship = targetCase.getShip();
         if (ship != null) {
             ship.hit();
-            System.out.println("Hit!");
             if (ship.isSunk()) {
-                System.out.println("You sunk a " + ship.getType() + "!");
+                return "Hit! You sunk a " + ship.getType() + "!";
+            } else {
+                return "Hit!";
             }
         } else {
-            System.out.println("Miss!");
+            return "Miss!";
         }
     }
 }
