@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.example.battlenavalserver.model.Case;
 import com.example.battlenavalserver.model.Game;
 import com.example.battlenavalserver.model.Ship;
+import com.example.battlenavalserver.model.Case.ShotResult;
 import com.example.battlenavalserver.model.Ship.ShipType;
 import com.example.battlenavalserver.repository.GameRepository;
 
@@ -87,13 +88,12 @@ public class GameService {
      * @param lign   Row index of the target case.
      * @param column Column index of the target case.
      */
-    public String fireAt(Game game, int lign, int column) {
+    public ShotResult fireAt(Game game, int lign, int column) {
         Case targetCase = game.getGrid().getGrid()[lign][column];
 
         // Check if the case has already been hit
         if (targetCase.isHit()) {
-            System.out.println("This position has already been attacked. Choose a different one.");
-            return "This position has already been attacked. Choose a different one.";
+            return ShotResult.MISS;
         }
         // Mark the case as hit
         targetCase.setHit(true);
@@ -102,12 +102,12 @@ public class GameService {
         if (ship != null) {
             ship.hit();
             if (ship.isSunk()) {
-                return "Hit! You sunk a " + ship.getType() + "!";
+                return ShotResult.SUNK; //targetCase.getShotResult();
             } else {
-                return "Hit!";
+                return ShotResult.HIT;
             }
         } else {
-            return "Miss!";
+            return ShotResult.MISS;
         }
     }
 }
