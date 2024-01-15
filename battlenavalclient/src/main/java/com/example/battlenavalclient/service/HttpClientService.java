@@ -28,8 +28,8 @@ public class HttpClientService {
 	@Profile("!test")
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
-			Quote quote = restTemplate.getForObject(
-					"http://localhost:8080/api/random", Quote.class);
+			String quote = restTemplate.getForObject(
+					"http://localhost:8080/game/", String.class);
 			log.info(quote.toString());
 		};
 	}
