@@ -38,7 +38,7 @@ public class GameController {
         return ResponseEntity.ok(responseMessage);
     }
 
-    @GetMapping("/{gameId}")
+    @GetMapping("/{gameId}/id")
     public ResponseEntity<Game> getGame(@PathVariable String gameId) {
         Game game = gameService.getGameById(gameId);
         if (game == null) {
@@ -46,7 +46,7 @@ public class GameController {
         }
         return ResponseEntity.ok(game);
     }
-    @GetMapping("/{getGameByteamName}")
+    @GetMapping("/{teamName}/team")
     public ResponseEntity<Game> getGameByteamName(@PathVariable String teamName) {
         Game game = gameService.getGameByteamName(teamName);
         if (game == null) {
