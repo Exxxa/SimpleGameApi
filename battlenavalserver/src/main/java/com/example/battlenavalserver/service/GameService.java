@@ -28,6 +28,7 @@ public class GameService {
     public Game initializeGame(String gameId, String teamName) {
         Game game = new Game(gameId, teamName);
         placeShips(game);
+        saveGame(game);
         return game;
     }
 
