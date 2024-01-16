@@ -1,5 +1,7 @@
 package com.example.battlenavalserver.service;
 
+import java.util.Random;
+
 import org.springframework.stereotype.Service;
 
 import com.example.battlenavalserver.model.Case;
@@ -68,17 +70,130 @@ public class GameService {
      * @param game The game on which ships will be placed.
      */
     private static void placeShips(Game game) {
-        // You can adjust these placements as needed
-        game.placeShip(ShipType.AIRCRAFT_CARRIER, 0, 0, true);
-        game.placeShip(ShipType.CRUISER, 2, 9, false);
-        game.placeShip(ShipType.CRUISER, 2, 3, false);
-        game.placeShip(ShipType.DESTROYER, 5, 5, true);
-        game.placeShip(ShipType.DESTROYER, 4, 4, true);
-        game.placeShip(ShipType.DESTROYER, 5, 6, true);
-        game.placeShip(ShipType.TORPEDO_BOAT, 8, 2, false);
-        game.placeShip(ShipType.TORPEDO_BOAT, 8, 2, false);
-        game.placeShip(ShipType.TORPEDO_BOAT, 8, 2, false);
-        game.placeShip(ShipType.TORPEDO_BOAT, 8, 2, false);
+        
+        int[] shipSizes = {4, 3, 3, 2, 2, 2, 1, 1, 1, 1};
+        Random random = new Random();
+        int randomLign = random.nextInt(10);
+        int randomColumn = random.nextInt(10);
+        boolean direction = random.nextBoolean();
+        
+
+        while(!game.isValidPlacement(randomLign, randomColumn, shipSizes[0], direction)){
+            randomLign = random.nextInt(10);
+            randomColumn = random.nextInt(10);
+            direction = random.nextBoolean();
+            if(game.isValidPlacement(randomLign, randomColumn, shipSizes[0], direction)){
+                game.placeShip(ShipType.AIRCRAFT_CARRIER, randomLign, randomColumn, direction);
+            }   
+        }
+
+        randomLign = random.nextInt(10);
+        randomColumn = random.nextInt(10);
+        direction = random.nextBoolean();
+        while(!game.isValidPlacement(randomLign, randomColumn, shipSizes[1], direction)){
+            randomLign = random.nextInt(10);
+            randomColumn = random.nextInt(10);
+            direction = random.nextBoolean();
+            if(game.isValidPlacement(randomLign, randomColumn, shipSizes[1], direction)){
+                game.placeShip(ShipType.CRUISER, randomLign, randomColumn, direction);
+            }   
+        }
+
+        randomLign = random.nextInt(10);
+        randomColumn = random.nextInt(10);
+        direction = random.nextBoolean();
+        while(!game.isValidPlacement(randomLign, randomColumn, shipSizes[2], direction)){
+            randomLign = random.nextInt(10);
+            randomColumn = random.nextInt(10);
+            direction = random.nextBoolean();
+            if(game.isValidPlacement(randomLign, randomColumn, shipSizes[2], direction)){
+                game.placeShip(ShipType.CRUISER, randomLign, randomColumn, direction);
+            }   
+        }
+
+        randomLign = random.nextInt(10);
+        randomColumn = random.nextInt(10);
+        direction = random.nextBoolean();
+        while(!game.isValidPlacement(randomLign, randomColumn, shipSizes[3], direction)){
+            randomLign = random.nextInt(10);
+            randomColumn = random.nextInt(10);
+            direction = random.nextBoolean();
+            if(game.isValidPlacement(randomLign, randomColumn, shipSizes[3], direction)){
+                game.placeShip(ShipType.DESTROYER, randomLign, randomColumn, direction);
+            }   
+        }
+
+        randomLign = random.nextInt(10);
+        randomColumn = random.nextInt(10);
+        direction = random.nextBoolean();
+        while(!game.isValidPlacement(randomLign, randomColumn, shipSizes[4], direction)){
+            randomLign = random.nextInt(10);
+            randomColumn = random.nextInt(10);
+            direction = random.nextBoolean();
+            if(game.isValidPlacement(randomLign, randomColumn, shipSizes[4], direction)){
+                game.placeShip(ShipType.DESTROYER, randomLign, randomColumn, direction);
+            }   
+        }
+
+        randomLign = random.nextInt(10);
+        randomColumn = random.nextInt(10);
+        direction = random.nextBoolean();
+        while(!game.isValidPlacement(randomLign, randomColumn, shipSizes[5], direction)){
+            randomLign = random.nextInt(10);
+            randomColumn = random.nextInt(10);
+            direction = random.nextBoolean();
+            if(game.isValidPlacement(randomLign, randomColumn, shipSizes[5], direction)){
+                game.placeShip(ShipType.DESTROYER, randomLign, randomColumn, direction);
+            }   
+        }
+
+        randomLign = random.nextInt(10);
+        randomColumn = random.nextInt(10);
+        direction = random.nextBoolean();
+        while(!game.isValidPlacement(randomLign, randomColumn, shipSizes[6], direction)){
+            randomLign = random.nextInt(10);
+            randomColumn = random.nextInt(10);
+            direction = random.nextBoolean();
+            if(game.isValidPlacement(randomLign, randomColumn, shipSizes[6], direction)){
+                game.placeShip(ShipType.TORPEDO_BOAT, randomLign, randomColumn, direction);
+            }   
+        }
+
+        randomLign = random.nextInt(10);
+        randomColumn = random.nextInt(10);
+        direction = random.nextBoolean();
+        while(!game.isValidPlacement(randomLign, randomColumn, shipSizes[7], direction)){
+            randomLign = random.nextInt(10);
+            randomColumn = random.nextInt(10);
+            direction = random.nextBoolean();
+            if(game.isValidPlacement(randomLign, randomColumn, shipSizes[7], direction)){
+                game.placeShip(ShipType.TORPEDO_BOAT, randomLign, randomColumn, direction);
+            }   
+        }
+
+        randomLign = random.nextInt(10);
+        randomColumn = random.nextInt(10);
+        direction = random.nextBoolean();
+        while(!game.isValidPlacement(randomLign, randomColumn, shipSizes[8], direction)){
+            randomLign = random.nextInt(10);
+            randomColumn = random.nextInt(10);
+            direction = random.nextBoolean();
+            if(game.isValidPlacement(randomLign, randomColumn, shipSizes[8], direction)){
+                game.placeShip(ShipType.TORPEDO_BOAT, randomLign, randomColumn, direction);
+            }   
+        }
+
+        randomLign = random.nextInt(10);
+        randomColumn = random.nextInt(10);
+        direction = random.nextBoolean();
+        while(!game.isValidPlacement(randomLign, randomColumn, shipSizes[9], direction)){
+            randomLign = random.nextInt(10);
+            randomColumn = random.nextInt(10);
+            direction = random.nextBoolean();
+            if(game.isValidPlacement(randomLign, randomColumn, shipSizes[9], direction)){
+                game.placeShip(ShipType.TORPEDO_BOAT, randomLign, randomColumn, direction);
+            }   
+        }
     }
 
     /**

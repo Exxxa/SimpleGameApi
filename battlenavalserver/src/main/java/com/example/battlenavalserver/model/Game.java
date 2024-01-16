@@ -22,7 +22,7 @@ public class Game {
         this.shotsFired = 0;
     }
 
-    private boolean isValidPlacement(int startLign, int startColumn, int size, boolean isHorizontal) {
+    public boolean isValidPlacement(int startLign, int startColumn, int size, boolean isHorizontal) {
         // Check if the ship fits within the grid boundaries
         if (isHorizontal && startColumn + size > 10) {
             return false;
@@ -62,6 +62,7 @@ public class Game {
     
             // Check if the placement is valid
             if (!isValidPlacement(startLign, startColumn, size, isHorizontal)) {
+                //FAUT IL METTRE CE PRINT ??
                 System.out.println("Invalid placement. Please choose different coordinates.");
                 return;
             }
@@ -78,6 +79,7 @@ public class Game {
                 gridCase.setShip(ship);
             }
         }
+
     public String getGameId() {
         return  this.gameId;
     }

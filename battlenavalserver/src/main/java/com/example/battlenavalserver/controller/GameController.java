@@ -29,11 +29,11 @@ public class GameController {
             @RequestParam int lign,
             @RequestParam int column) {
         Game game = gameService.getGameById(gameId);
-        if (game == null) {
+        /*if (game == null) {
             System.out.println("Game with ID " + gameId + " not found.");
             return ResponseEntity.notFound().build();
             }
-    
+    */
         ShotResult responseMessage =gameService.fireAt(game, lign, column);
         return ResponseEntity.ok(responseMessage);
     }
