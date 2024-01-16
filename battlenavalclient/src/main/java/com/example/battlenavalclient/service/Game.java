@@ -1,24 +1,28 @@
 package com.example.battlenavalclient.service;
 
 public class Game {
-    private String ID;
+    private String id;
     private String teamName;
 
-    public Game(String ID, String teamName){
-        this.ID = ID;
+    public Game(){
+
+    }
+
+    public Game(String id, String teamName){
+        this.id = id;
         this.teamName = teamName;
     }
 
-    public String getID(){
-        return this.ID;
+    public String getId(){
+        return this.id;
     }
 
     public String getTeamName(){
         return this.teamName;
     }
 
-    public void setID(String ID){
-        this.ID = ID;
+    public void setId(String id){
+        this.id = id;
     }
 
     public void setTeamName(String teamName){
