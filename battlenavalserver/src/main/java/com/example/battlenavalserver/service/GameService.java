@@ -81,11 +81,9 @@ public class GameService {
         while(!game.isValidPlacement(randomLign, randomColumn, shipSizes[0], direction)){
             randomLign = random.nextInt(10);
             randomColumn = random.nextInt(10);
-            direction = random.nextBoolean();
-            if(game.isValidPlacement(randomLign, randomColumn, shipSizes[0], direction)){
-                game.placeShip(ShipType.AIRCRAFT_CARRIER, randomLign, randomColumn, direction);
-            }   
+            direction = random.nextBoolean();  
         }
+        game.placeShip(ShipType.AIRCRAFT_CARRIER, randomLign, randomColumn, direction);
 
         randomLign = random.nextInt(10);
         randomColumn = random.nextInt(10);
@@ -94,10 +92,8 @@ public class GameService {
             randomLign = random.nextInt(10);
             randomColumn = random.nextInt(10);
             direction = random.nextBoolean();
-            if(game.isValidPlacement(randomLign, randomColumn, shipSizes[1], direction)){
-                game.placeShip(ShipType.CRUISER, randomLign, randomColumn, direction);
-            }   
         }
+        game.placeShip(ShipType.CRUISER, randomLign, randomColumn, direction);
 
         randomLign = random.nextInt(10);
         randomColumn = random.nextInt(10);
@@ -106,10 +102,8 @@ public class GameService {
             randomLign = random.nextInt(10);
             randomColumn = random.nextInt(10);
             direction = random.nextBoolean();
-            if(game.isValidPlacement(randomLign, randomColumn, shipSizes[2], direction)){
-                game.placeShip(ShipType.CRUISER, randomLign, randomColumn, direction);
-            }   
         }
+        game.placeShip(ShipType.CRUISER, randomLign, randomColumn, direction);
 
         randomLign = random.nextInt(10);
         randomColumn = random.nextInt(10);
@@ -117,11 +111,9 @@ public class GameService {
         while(!game.isValidPlacement(randomLign, randomColumn, shipSizes[3], direction)){
             randomLign = random.nextInt(10);
             randomColumn = random.nextInt(10);
-            direction = random.nextBoolean();
-            if(game.isValidPlacement(randomLign, randomColumn, shipSizes[3], direction)){
-                game.placeShip(ShipType.DESTROYER, randomLign, randomColumn, direction);
-            }   
+            direction = random.nextBoolean(); 
         }
+        game.placeShip(ShipType.DESTROYER, randomLign, randomColumn, direction); 
 
         randomLign = random.nextInt(10);
         randomColumn = random.nextInt(10);
@@ -130,10 +122,8 @@ public class GameService {
             randomLign = random.nextInt(10);
             randomColumn = random.nextInt(10);
             direction = random.nextBoolean();
-            if(game.isValidPlacement(randomLign, randomColumn, shipSizes[4], direction)){
-                game.placeShip(ShipType.DESTROYER, randomLign, randomColumn, direction);
-            }   
         }
+        game.placeShip(ShipType.DESTROYER, randomLign, randomColumn, direction);
 
         randomLign = random.nextInt(10);
         randomColumn = random.nextInt(10);
@@ -141,11 +131,9 @@ public class GameService {
         while(!game.isValidPlacement(randomLign, randomColumn, shipSizes[5], direction)){
             randomLign = random.nextInt(10);
             randomColumn = random.nextInt(10);
-            direction = random.nextBoolean();
-            if(game.isValidPlacement(randomLign, randomColumn, shipSizes[5], direction)){
-                game.placeShip(ShipType.DESTROYER, randomLign, randomColumn, direction);
-            }   
+            direction = random.nextBoolean();  
         }
+        game.placeShip(ShipType.DESTROYER, randomLign, randomColumn, direction);
 
         randomLign = random.nextInt(10);
         randomColumn = random.nextInt(10);
@@ -154,10 +142,8 @@ public class GameService {
             randomLign = random.nextInt(10);
             randomColumn = random.nextInt(10);
             direction = random.nextBoolean();
-            if(game.isValidPlacement(randomLign, randomColumn, shipSizes[6], direction)){
-                game.placeShip(ShipType.TORPEDO_BOAT, randomLign, randomColumn, direction);
-            }   
         }
+        game.placeShip(ShipType.TORPEDO_BOAT, randomLign, randomColumn, direction);
 
         randomLign = random.nextInt(10);
         randomColumn = random.nextInt(10);
@@ -166,10 +152,8 @@ public class GameService {
             randomLign = random.nextInt(10);
             randomColumn = random.nextInt(10);
             direction = random.nextBoolean();
-            if(game.isValidPlacement(randomLign, randomColumn, shipSizes[7], direction)){
-                game.placeShip(ShipType.TORPEDO_BOAT, randomLign, randomColumn, direction);
-            }   
         }
+        game.placeShip(ShipType.TORPEDO_BOAT, randomLign, randomColumn, direction);   
 
         randomLign = random.nextInt(10);
         randomColumn = random.nextInt(10);
@@ -178,10 +162,8 @@ public class GameService {
             randomLign = random.nextInt(10);
             randomColumn = random.nextInt(10);
             direction = random.nextBoolean();
-            if(game.isValidPlacement(randomLign, randomColumn, shipSizes[8], direction)){
-                game.placeShip(ShipType.TORPEDO_BOAT, randomLign, randomColumn, direction);
-            }   
         }
+        game.placeShip(ShipType.TORPEDO_BOAT, randomLign, randomColumn, direction);
 
         randomLign = random.nextInt(10);
         randomColumn = random.nextInt(10);
@@ -189,11 +171,9 @@ public class GameService {
         while(!game.isValidPlacement(randomLign, randomColumn, shipSizes[9], direction)){
             randomLign = random.nextInt(10);
             randomColumn = random.nextInt(10);
-            direction = random.nextBoolean();
-            if(game.isValidPlacement(randomLign, randomColumn, shipSizes[9], direction)){
-                game.placeShip(ShipType.TORPEDO_BOAT, randomLign, randomColumn, direction);
-            }   
+            direction = random.nextBoolean();  
         }
+        game.placeShip(ShipType.TORPEDO_BOAT, randomLign, randomColumn, direction);
     }
 
     /**

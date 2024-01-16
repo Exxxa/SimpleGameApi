@@ -60,13 +60,6 @@ public class Game {
         public void placeShip(ShipType shipType, int startLign, int startColumn, boolean isHorizontal) {
             int size = shipType.getSize();
     
-            // Check if the placement is valid
-            if (!isValidPlacement(startLign, startColumn, size, isHorizontal)) {
-                //FAUT IL METTRE CE PRINT ??
-                System.out.println("Invalid placement. Please choose different coordinates.");
-                return;
-            }
-    
             // Create a new ship
             Ship ship = new Ship(shipType);
     
