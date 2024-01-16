@@ -40,11 +40,12 @@ public class HttpClientService {
 			ResponseEntity<Game> gameId = restTemplate.postForEntity("http://localhost:8080/game/start?teamName=myTeam",null,Game.class);
 			log.info(gameId.toString());
 
-			/*String id = gameId.getBody().getId();
+			String id = gameId.getBody().getId();
 			log.info(id);
 			log.info(gameId.getBody().getId());
+			/* 
 			FileWriter myObj = new FileWriter(
-				"C:\\Users\\zmoy0\\Desktop\\Courses\\4A\\Application Architecture\\group-project\\battlenavalclient\\debugging-gorillas"
+				"group-project\\battlenavalclient\\debugging-gorillas"
 				+ gameId.getBody() + ".txt");
 
 			String baseUrls = "";
