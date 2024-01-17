@@ -4,7 +4,7 @@ import com.example.battlenavalserver.model.Game;
 import com.example.battlenavalserver.model.Case.ShotResult;
 import com.example.battlenavalserver.service.GameService;
 
-import java.util.UUID;
+//import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +17,8 @@ public class GameController {
     private GameService gameService;
 
     @PostMapping("/start")
-    public ResponseEntity<Game> startGame(@RequestParam(value = "teamName", defaultValue = "Debugging-gorillas") String teamName) {
-        String gameId = UUID.randomUUID().toString(); 
+    public ResponseEntity<Game> startGame(@RequestParam(value = "teamName", defaultValue = "Debugging-gorillas") String teamName, @RequestParam(value = "gameId") String gameId) {
+        //String gameId = UUID.randomUUID().toString(); 
         Game game = gameService.initializeGame(gameId, teamName);
         return ResponseEntity.ok(game);
     }
