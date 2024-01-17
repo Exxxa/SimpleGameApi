@@ -1,10 +1,10 @@
 package com.example.battlenavalclient.service;
 
 import java.io.FileWriter;
-import java.io.FilterWriter;
-import java.util.concurrent.ExecutionException;
+//import java.io.FilterWriter;
+//import java.util.concurrent.ExecutionException;
 
-import org.apache.catalina.Service;
+//import org.apache.catalina.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -12,14 +12,23 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Profile;
+//import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 public class HttpClientService {
 
+
+	public void setShipCount(int i) {
+		shipCount = i;
+	}
+
+	public void setShotFired(int i) {
+		shotFired = i;
+	}
+	
 	private int shipCount = 10;
 	private int shotFired = 0; 
 
@@ -44,10 +53,9 @@ public class HttpClientService {
 			 
 			//Good file name ? --> This data is written to a file named [clientname]-[servername]-[suffix].txt
 			FileWriter myObj = new FileWriter(
-				"C:\\Users\\zmoy0\\Desktop\\Courses\\4A\\Application Architecture\\group-project\\battlenavalclient\\gameReviews\\debugging-gorillas"
+				"gameReviews\\debugging-gorillas"
 				+ gameId.getBody() + ".txt", false);
-
-			//Improve client's shot strategy ?
+			
 			for (int i=0; i<10; i++){
 				for (int j = 0; j<10; j++){
 					shotFired++;
@@ -57,21 +65,17 @@ public class HttpClientService {
 					if(cell.toString() == "SUNK"){
 						shipCount--;
 					}
-					/*if (shipCount == 0){
-						//String shot = "Number of shots fired : "  + shotFired;
-						//myObj.write(shot);
-						//myObj.write(String.valueOf(shotFired));
-						myObj.write(Integer.toString(shotFired));
+					if(shipCount == 0){
+						String shot = "Number of shots fired : "  + shotFired;
+						myObj.write(shot);
 						break;
-					}*/
-					String shot = "Number of shots fired : "  + shotFired;
-					myObj.write(shot);
+					}
+				}
+				if(shipCount == 0){
+					break;
 				}	
 			}
-			//String shot = "Number of shots fired during the game: "  + shotFired;
-			//myObj.write(shot);
-			//myObj.write(String.valueOf(shotFired));
-			//myObj.write(Integer.toString(shotFired));
+			myObj.close();
 		};
 	}
 }
