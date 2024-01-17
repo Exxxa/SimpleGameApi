@@ -29,11 +29,11 @@ public class GameController {
             @RequestParam int lign,
             @RequestParam int column) {
         Game game = gameService.getGameById(gameId);
-        /*if (game == null) {
-            System.out.println("Game with ID " + gameId + " not found.");
+        if (game == null) {
+            //System.out.println("Game with ID " + gameId + " not found.");
             return ResponseEntity.notFound().build();
             }
-    */
+    
         ShotResult responseMessage =gameService.fireAt(game, lign, column);
         return ResponseEntity.ok(responseMessage);
     }
@@ -47,7 +47,7 @@ public class GameController {
         return ResponseEntity.ok(game);
     }
     @GetMapping("/{teamName}/team")
-    public ResponseEntity<Game> getGameByteamName(@PathVariable String teamName) {
+    public ResponseEntity<Game> getGameteam(@PathVariable String teamName) {
         Game game = gameService.getGameByteamName(teamName);
         if (game == null) {
             return ResponseEntity.notFound().build();
@@ -57,7 +57,6 @@ public class GameController {
 
     @GetMapping("/")
     public ResponseEntity<String> test() {
-        
         return ResponseEntity.ok("Please go to http://localhost:8080/game/start to start a new game !");
     }
 }
