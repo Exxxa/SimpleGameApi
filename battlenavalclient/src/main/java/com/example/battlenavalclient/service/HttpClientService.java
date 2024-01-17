@@ -37,38 +37,28 @@ public class HttpClientService {
 	@Bean
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
-			ResponseEntity<Game> gameId = restTemplate.postForEntity("http://localhost:8080/game/start?teamName=myTeam&gameId=1",null,Game.class);
+			ResponseEntity<Game> gameId = restTemplate.postForEntity("http://localhost:8080/game/start?teamName=Debugging-gorillas&gameId=1",null,Game.class);
 			log.info("Response: {}", gameId);
-			//Same
-			//log.info("Response ???: {}", gameId.toString());
-        	
 			log.info("Response Body: {}", gameId.getBody());
-			
-			String id = gameId.getBody().getId();
-			log.info("Response id: {}", id);
-			
-			/* 
+			log.info("Response id: {}", 1);
+			 
 			FileWriter myObj = new FileWriter(
-				"group-project\\battlenavalclient\\debugging-gorillas"
+				"C:\\Users\\zmoy0\\Desktop\\Courses\\4A\\Application Architecture\\group-project\\battlenavalclient\\gameReviews\\debugging-gorillas"
 				+ gameId.getBody() + ".txt");
 
 			String baseUrls = "";
 			for (int i=0; i<10; i++){
 				for (int j = 0; j<10; j++){
 					shotFired++;
-					ShotResult cell = restTemplate.postForObject(
-						"http://localhost:8080/game/" + id  + "/fire?lign=" + i + "&column=" +j, null, ShotResult.class
-					);
+					ShotResult cell = restTemplate.postForObject("http://localhost:8080/game/1/fire?lign=" + i + "&column=" + j, null, ShotResult.class);
 					log.info(cell.toString());
 					if(cell.toString() == "SUNK"){
 						shipCount--;
 					}
-					if(shipCount == 0){
-						myObj.write(shotFired);
-						break;
-					}
+					log.info("Shots fired : {}", shotFired);
 				}
-			}*/
+			}
+			myObj.write(shotFired);
 		};
 	}
 }
