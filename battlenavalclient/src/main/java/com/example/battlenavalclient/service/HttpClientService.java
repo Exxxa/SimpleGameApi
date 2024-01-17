@@ -40,7 +40,7 @@ public class HttpClientService {
 			ResponseEntity<Game> gameId = restTemplate.postForEntity("http://localhost:8080/game/start?teamName=myTeam",null,Game.class);
 			log.info(gameId.toString());
 
-			/*String id = gameId.getBody().getId();
+			String id = gameId.getBody().getId();
 			log.info(id);
 			log.info(gameId.getBody().getId());
 			FileWriter myObj = new FileWriter(
@@ -52,7 +52,7 @@ public class HttpClientService {
 				for (int j = 0; j<10; j++){
 					shotFired++;
 					ShotResult cell = restTemplate.postForObject(
-						"http://localhost:8080/game/start?teamName=myTeam" + i + "&column=" +j, null, ShotResult.class, id
+						"http://localhost:8080/game/" + id  + "/fire?lign=" + i + "&column=" +j, null, ShotResult.class
 					);
 					log.info(cell.toString());
 					if(cell.toString() == "SUNK"){
@@ -63,7 +63,7 @@ public class HttpClientService {
 						break;
 					}
 				}
-			}*/
+			}
 		};
 	}
 }
