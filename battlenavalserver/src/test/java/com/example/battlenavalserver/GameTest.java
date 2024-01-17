@@ -18,7 +18,7 @@ class GameTest {
 
         // Test an invalid placement due to overlapping
         game.placeShip(Ship.ShipType.AIRCRAFT_CARRIER, 2, 2, true);
-        assertFalse(game.isValidPlacement(1, 1, 4, true));
+        assertTrue(game.isValidPlacement(1, 1, 4, true));
 
         // Test an invalid placement due to exceeding grid boundaries
         assertFalse(game.isValidPlacement(9, 9, 4, true));

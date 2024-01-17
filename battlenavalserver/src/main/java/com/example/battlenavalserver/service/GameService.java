@@ -21,9 +21,14 @@ public class GameService {
 
     /**
      * Constructor for GameService class.
+     * @param gameRepository2 
      */
-    public GameService() {
+    public GameService(GameRepository gameRepository2) {
         this.gameRepository = new GameRepository();
+    }
+
+    public GameService() {
+        //TODO Auto-generated constructor stub
     }
 
     /**
