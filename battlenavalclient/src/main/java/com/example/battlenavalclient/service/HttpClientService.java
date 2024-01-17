@@ -37,12 +37,16 @@ public class HttpClientService {
 	@Bean
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
-			ResponseEntity<Game> gameId = restTemplate.postForEntity("http://localhost:8080/game/start?teamName=myTeam",null,Game.class);
-			log.info(gameId.toString());
-
+			ResponseEntity<Game> gameId = restTemplate.postForEntity("http://localhost:8080/game/start?teamName=myTeam&gameId=1",null,Game.class);
+			log.info("Response: {}", gameId);
+			//Same
+			//log.info("Response ???: {}", gameId.toString());
+        	
+			log.info("Response Body: {}", gameId.getBody());
+			
 			String id = gameId.getBody().getId();
-			log.info(id);
-			log.info(gameId.getBody().getId());
+			log.info("Response id: {}", id);
+			
 			/* 
 			FileWriter myObj = new FileWriter(
 				"group-project\\battlenavalclient\\debugging-gorillas"
