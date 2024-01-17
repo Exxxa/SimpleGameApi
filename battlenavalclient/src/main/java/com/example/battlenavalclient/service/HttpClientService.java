@@ -16,7 +16,17 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 public class HttpClientService {
 
+	public void setShipCount(int i) {
+		shipCount = i;
+	}
+
+	public void setShotFired(int i) {
+		shotFired = i;
+	}
+
     // Variables to keep track of ship count and shots fired
+
+
     private int shipCount = 10;
     private int shotFired = 0;
 
