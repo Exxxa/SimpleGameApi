@@ -42,23 +42,36 @@ public class HttpClientService {
 			log.info("Response Body: {}", gameId.getBody());
 			log.info("Response id: {}", 1);
 			 
+			//Good file name ? --> This data is written to a file named [clientname]-[servername]-[suffix].txt
 			FileWriter myObj = new FileWriter(
 				"C:\\Users\\zmoy0\\Desktop\\Courses\\4A\\Application Architecture\\group-project\\battlenavalclient\\gameReviews\\debugging-gorillas"
-				+ gameId.getBody() + ".txt");
+				+ gameId.getBody() + ".txt", false);
 
-			String baseUrls = "";
+			//Improve client's shot strategy ?
 			for (int i=0; i<10; i++){
 				for (int j = 0; j<10; j++){
 					shotFired++;
 					ShotResult cell = restTemplate.postForObject("http://localhost:8080/game/1/fire?lign=" + i + "&column=" + j, null, ShotResult.class);
 					log.info(cell.toString());
+					log.info("Shots fired : {}", shotFired);
 					if(cell.toString() == "SUNK"){
 						shipCount--;
 					}
-					log.info("Shots fired : {}", shotFired);
-				}
+					/*if (shipCount == 0){
+						//String shot = "Number of shots fired : "  + shotFired;
+						//myObj.write(shot);
+						//myObj.write(String.valueOf(shotFired));
+						myObj.write(Integer.toString(shotFired));
+						break;
+					}*/
+					String shot = "Number of shots fired : "  + shotFired;
+					myObj.write(shot);
+				}	
 			}
-			myObj.write(shotFired);
+			//String shot = "Number of shots fired during the game: "  + shotFired;
+			//myObj.write(shot);
+			//myObj.write(String.valueOf(shotFired));
+			//myObj.write(Integer.toString(shotFired));
 		};
 	}
 }
