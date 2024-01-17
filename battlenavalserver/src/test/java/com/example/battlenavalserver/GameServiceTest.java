@@ -1,9 +1,6 @@
 package com.example.battlenavalserver;
 
-import com.example.battlenavalserver.model.Case;
 import com.example.battlenavalserver.model.Game;
-import com.example.battlenavalserver.model.Ship;
-import com.example.battlenavalserver.model.Ship.ShipType;
 import com.example.battlenavalserver.model.Case.ShotResult;
 import com.example.battlenavalserver.repository.GameRepository;
 import com.example.battlenavalserver.service.GameService;
