@@ -44,8 +44,9 @@ public class HttpClientService {
 			 
 			//Good file name ? --> This data is written to a file named [clientname]-[servername]-[suffix].txt
 			FileWriter myObj = new FileWriter(
-				"battlenavalclient/gameReviews/debugging-gorillas" + gameId.getBody() + ".txt");
-			
+				"C:\\Users\\zmoy0\\Desktop\\Courses\\4A\\Application Architecture\\group-project\\battlenavalclient\\gameReviews\\debugging-gorillas"
+				+ gameId.getBody() + ".txt", false);
+
 			//Improve client's shot strategy ?
 			for (int i=0; i<10; i++){
 				for (int j = 0; j<10; j++){
